@@ -1,0 +1,18 @@
+---
+layout: base.njk
+---
+
+<nav class="topNav">
+    <!--<img src="/static/img/logo.png" alt="Freecord Logo" -->
+    <h2><a href="/" style="text-decoration:none;color:var(--accent);">Freecord</a></h2>
+    <div class="navLinks">
+        <a href="/">Home</a>
+        <a href="/downloads/">Download</a>
+        <a href="/tour/">Tour</a>
+        <a href="/docs/">Docs</a>
+    </div>
+</nav>
+
+<main class="centerMe">
+    {{ content | safe }}
+</main>

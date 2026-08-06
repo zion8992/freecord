@@ -1,0 +1,912 @@
+@import url('https://fonts.googleapis.com/css2?family=Coiny&family=Exo:ital,wght@0,100..900;1,100..900&family=Marcellus&family=Red+Hat+Mono:ital,wght@0,300..700;1,300..700&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+/* --------------------------------------------------------------------------
+   1. TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+    /* FONTS */
+    --font-main: "Exo", sans-serif;
+    --font-special: "Coiny", system-ui;
+    --font-header: "Marcellus", serif;
+    --font-code: "Red Hat Mono", monospace;
+
+    /* COLORS */
+    --accent: #4b8dc7;
+    --accent-faded: #cddeec;
+    --button: #55bd63;
+    --button-hover: #81ce8b;
+    --button-faded: #e5f8e8;
+    --bg: white;
+
+    --accent-dark: #2f6a9e;      /* accent but darker */
+    --accent-deep: #1c4165;      /* accent but much darker */
+    --accent-pale: #eef4fa;      /* accent-faded but paler */
+    --accent-warm: #c78a4b;      /* accent's complement, warm/orange */
+    --button-dark: #3f9d4d;      /* button but darker */
+    --ink: #1b2a38;              /* accent but near-black, desaturated */
+    --ink-muted: #5c6b7a;        /* accent but desaturated and darker */
+    --surface: #f8fafc;          /* accent but almost white */
+    --border: #dbe4ec;           /* accent-faded but greyer */
+    --shadow: rgba(27, 42, 56, .10);       /* ink at 10% */
+    --shadow-lift: rgba(27, 42, 56, .16);  /* ink at 16% */
+    --glow: rgba(75, 141, 199, .28);       /* accent at 28% */
+    --hero-core: #88B1D2;        /* the blue already in your hero gradient */
+
+    /* MOTION — was repeated 11x inline */
+    --ease-out: cubic-bezier(.22, .61, .36, 1);
+    --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+
+    /* GEOMETRY */
+    --radius: 10px;
+    --radius-lg: 14px;
+    --radius-pill: 999px;
+    --measure: 64rem;            /* max content width */
+
+    /* NAVIGATION — --nav-gap was used but never defined */
+    --nav-gap: 15px;
+    --side-nav-w: 225px;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+}
+
+/* Smooth cross-page navigation where supported, plain loads elsewhere. */
+@view-transition { navigation: auto; }
+
+body {
+    font-family: var(--font-main);   /* was var(--font--main) — typo */
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--ink);
+    background-color: var(--bg);
+    /* footer is display:none, so the old 200px reservation was dead space */
+    margin-bottom: 3rem;
+}
+
+/* Form controls do not inherit font-family from body. */
+button,
+input,
+select,
+textarea { font: inherit; color: inherit; }
+
+img,
+svg,
+video { max-width: 100%; }
+
+/* One visible focus ring for everything. */
+:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+.downloadBand :focus-visible { outline-color: var(--bg); }
+
+/* --------------------------------------------------------------------------
+   3. TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-header);
+    line-height: 1.25;
+    text-wrap: balance;
+    color: var(--ink);
+}
+
+.title { font-family: var(--font-special); }
+
+p, li, dd, figcaption, label, blockquote { font-family: var(--font-main); }
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+a:hover {
+    color: var(--accent-dark);
+    text-decoration: underline;
+}
+/* :is() keeps specificity high enough to beat a:hover above */
+:is(.btn, .bigFatDownloadButton, .button, .dlBtn,
+    .navLinks a, .sideNav a, .scrollCue, .card a):hover {
+    text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   4. PRIMITIVES
+   -------------------------------------------------------------------------- */
+
+/* 4a. BUTTONS
+   One base; size and colour come from per-modifier custom properties.
+   Class list kept broad so existing markup needs no edits. */
+.btn,
+.bigFatDownloadButton,
+.button,
+.dlBtn {
+    --btn-bg: var(--button);
+    --btn-bg-hover: var(--button-hover);
+    --btn-fg: var(--bg);
+
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    padding: var(--btn-pad, 1rem 1.25rem);
+    font-family: var(--font-main);      /* never inherit Marcellus from an h3 */
+    font-size: var(--btn-size, 1rem);
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    color: var(--btn-fg);
+    background-color: var(--btn-bg);
+    border: 2px solid transparent;      /* so --ghost is the same size */
+    border-radius: var(--radius);
+    box-shadow: 0 4px 14px var(--shadow);
+    cursor: pointer;
+    transition:
+        background-color .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        transform .2s var(--ease-spring),
+        box-shadow .2s ease;
+}
+
+/* shine sweep */
+.btn::after,
+.bigFatDownloadButton::after,
+.button::after,
+.dlBtn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg,
+        transparent 35%, rgba(255, 255, 255, .4) 50%, transparent 65%);
+    transform: translateX(-130%);
+    transition: transform .75s ease;
+    pointer-events: none;
+}
+
+.btn:hover,
+.bigFatDownloadButton:hover,
+.button:hover,
+.dlBtn:hover {
+    background-color: var(--btn-bg-hover);
+    color: var(--btn-fg);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px var(--shadow-lift);
+}
+.btn:hover::after,
+.bigFatDownloadButton:hover::after,
+.button:hover::after,
+.dlBtn:hover::after { transform: translateX(130%); }
+
+.btn:active,
+.bigFatDownloadButton:active,
+.button:active,
+.dlBtn:active { transform: translateY(-1px); }
+
+/* sizes */
+.bigFatDownloadButton { --btn-pad: 20px; --btn-size: 1.05rem; }
+.button               { --btn-pad: 10px 14px; --btn-size: .95rem; }
+.dlBtn                { --btn-pad: .55rem .95rem; --btn-size: .88rem; }
+
+/* variants */
+.btn--ghost,
+.bigFatDownloadButton--ghost,
+.button--ghost {
+    --btn-bg: transparent;
+    --btn-bg-hover: var(--accent-faded);
+    --btn-fg: var(--accent-deep);
+    border-color: var(--accent);
+    box-shadow: none;
+}
+
+.btn--off,
+.dlBtn--off {
+    --btn-bg: var(--accent-pale);
+    --btn-bg-hover: var(--accent-pale);
+    --btn-fg: var(--ink-muted);
+    border: 1px dashed var(--border);
+    box-shadow: none;
+    cursor: not-allowed;
+}
+.btn--off:hover,
+.dlBtn--off:hover { transform: none; box-shadow: none; }
+.btn--off::after,
+.dlBtn--off::after { content: none; }
+
+/* 4b. CARDS
+   Third use of this pattern (features, downloads, client list), so it's
+   extracted now rather than speculatively. Legacy class names are aliases. */
+.card,
+.featureCard,
+.dlCard {
+    position: relative;
+    padding: 1.5rem 1.35rem;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    transition:
+        transform .22s var(--ease-out),
+        box-shadow .22s ease,
+        border-color .22s ease;
+}
+.card:hover,
+.featureCard:hover,
+.dlCard:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 12px 28px var(--shadow-lift);
+}
+
+.cardGrid,
+.dlGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.15rem;
+    margin-top: 2.25rem;
+}
+
+.cardIcon,
+.featureCard .icon,
+.dlIcon {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.2rem;
+    background-color: var(--accent-faded);
+    border-radius: 12px;
+    transition: background-color .25s ease, transform .3s var(--ease-spring);
+}
+.card:hover .cardIcon,
+.featureCard:hover .icon,
+.dlCard:hover .dlIcon {
+    background-color: var(--accent);
+    transform: rotate(-8deg) scale(1.07);
+}
+
+.card h3,
+.featureCard h3,
+.dlCard h3 {
+    margin: 0 0 .5rem;
+    font-family: var(--font-header);
+    font-size: 1.15rem;
+    font-weight: 400;
+}
+.card p,
+.featureCard p {
+    margin: 0;
+    font-size: .92rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+}
+
+/* 4c. BADGE */
+.badge,
+.dlStatus {
+    align-self: flex-start;
+    padding: .15rem .6rem;
+    font-family: var(--font-main);
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    background-color: var(--accent-faded);
+    border-radius: var(--radius-pill);
+}
+.badge--ok,
+.dlCard[data-status="ready"] .dlStatus {
+    color: var(--button-dark);
+    background-color: var(--button-faded);
+}
+
+/* --------------------------------------------------------------------------
+   5. SCROLL REVEAL
+   Resting state is fully visible. Hidden states live entirely inside the
+   no-preference query, so no-JS and reduced-motion both get readable pages
+   with no cleanup rules needed.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+    .js-reveal .reveal {
+        opacity: 0;
+        transform: translateY(1.75rem);
+        transition:
+            opacity .65s var(--ease-out),
+            transform .65s var(--ease-out);
+        transition-delay: calc(var(--i, 0) * 90ms);
+        will-change: opacity, transform;
+    }
+    .js-reveal .reveal--left  { transform: translateX(-2rem); }
+    .js-reveal .reveal--right { transform: translateX(2rem); }
+    .js-reveal .reveal--zoom  { transform: scale(.95); }
+
+    .js-reveal .reveal.is-visible {
+        opacity: 1;
+        transform: none;
+        will-change: auto;
+    }
+
+    /* staged sub-animations */
+    .js-reveal .reveal .sectionTitle::after,
+    .js-reveal .reveal .roadmapMeter > span { transform: scaleX(0); }
+    .js-reveal .reveal.is-visible .sectionTitle::after,
+    .js-reveal .reveal.is-visible .roadmapMeter > span { transform: scaleX(1); }
+
+    .js-reveal .reveal .roadmap li[data-status="done"]::after {
+        transform: rotate(45deg) scale(0);
+    }
+    .js-reveal .reveal.is-visible .roadmap li[data-status="done"]::after {
+        transform: rotate(45deg) scale(1);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   6. LAYOUT
+   -------------------------------------------------------------------------- */
+.topNav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;   /* links left, logo right */
+    gap: var(--nav-gap);
+    min-height: 40px;                 /* was height:40px, which under-sized it */
+    padding: var(--nav-gap);
+    margin-bottom: 10px;
+    font-family: var(--font-header);
+    background-color: var(--accent-faded);
+    border-radius: var(--radius);
+}
+
+.sideNav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--nav-gap);
+    width: var(--side-nav-w);
+    padding: var(--nav-gap);
+    margin: 0;
+    font-family: var(--font-header);
+    background-color: var(--accent-faded);
+    border-radius: var(--radius);
+
+    /* floats over the content instead of occupying a flex track */
+    position: fixed;
+    top: var(--nav-gap);
+    inset-inline-start: var(--nav-gap);
+    max-height: calc(100vh - 2 * var(--nav-gap));
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    z-index: 100;
+}
+
+/* on the content wrapper the nav overlaps — now derived, not guessed */
+.pushAside {
+    margin-inline-start: calc(var(--side-nav-w) + var(--nav-gap) * 2);
+}
+
+.sideNav ul,
+.sideNav ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.sideNav :is(ul, ol) :is(ul, ol) {
+    padding-inline-start: 1rem;
+    margin-top: .25rem;
+}
+.sideNav li { margin: .15rem 0; }
+
+.sideNav a {
+    display: block;
+    padding: 4px 8px;
+    border-radius: 6px;
+    color: inherit;
+    border-inline-start: 3px solid transparent;
+    transition: background-color .15s ease, border-color .15s ease;
+}
+.sideNav a:hover { background-color: var(--bg); }
+.sideNav a[aria-current="page"] {
+    font-weight: 600;
+    background-color: var(--bg);
+    border-inline-start-color: var(--accent);
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+.navLinks a {
+    font-weight: bold;
+    color: var(--accent);
+}
+
+nav img {
+    display: block;    /* kills the inline-image baseline gap */
+    height: 40px;
+    width: auto;       /* was 50px, which distorted the logo */
+}
+
+footer {
+    display: none;     /* remove this line to enable */
+    padding: 1.5rem;
+    text-align: center;
+    font-size: .9rem;
+    color: var(--ink-muted);
+    background-color: var(--accent-faded);
+}
+
+/* sections */
+.section {
+    max-width: var(--measure);
+    margin: 0 auto;
+    padding: 5.5rem 1.5rem;
+}
+.section--split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: center;
+}
+.section--flip > *:first-child { order: 2; }
+
+.section--tinted {
+    max-width: none;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--accent-pale) 100%);
+}
+.section--tinted > .sectionInner {
+    max-width: var(--measure);
+    margin: 0 auto;
+}
+
+.sectionTitle {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 1.1rem;
+    padding-bottom: .45rem;
+    font-family: var(--font-header);
+    font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.5rem);
+    font-weight: 400;
+}
+.sectionTitle::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 2px;
+    transform-origin: left;
+    transition: transform .8s var(--ease-out) .15s;
+}
+
+.sectionLead,
+.dlLead {
+    margin: 0 0 1rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--ink-muted);
+}
+
+/* --------------------------------------------------------------------------
+   7. HOME PAGE
+   -------------------------------------------------------------------------- */
+.mainPageHero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(3rem, 8vw, 6.5rem) 1.5rem;
+    text-align: center;
+    background-color: var(--button-faded);
+    background-image: radial-gradient(circle at 30% 40%,
+        var(--hero-core) 45%, var(--accent-faded) 100%);
+    background-size: 160% 160%;
+    border-radius: var(--radius);
+    animation: heroDrift 22s ease-in-out infinite alternate;
+}
+@keyframes heroDrift {
+    from { background-position: 20% 30%; }
+    to   { background-position: 70% 60%; }
+}
+
+.mainPageHero > * {
+    animation: heroIn .85s var(--ease-out) both;
+    animation-delay: calc(var(--i, 0) * 130ms + 50ms);
+}
+/* fallback stagger if you don't set --i in the markup */
+.mainPageHero > *:nth-child(1) { --i: 0; }
+.mainPageHero > *:nth-child(2) { --i: 1; }
+.mainPageHero > *:nth-child(3) { --i: 2; }
+.mainPageHero > *:nth-child(4) { --i: 3; }
+.mainPageHero > *:nth-child(5) { --i: 4; }
+@keyframes heroIn {
+    from { opacity: 0; transform: translateY(1.25rem); }
+    to   { opacity: 1; transform: none; }
+}
+
+.mainPageHero .title {
+    margin: 0;
+    font-family: var(--font-special);
+    font-size: clamp(2.75rem, 1.5rem + 7vw, 4.5rem);
+    color: var(--bg);
+    text-shadow: 0 3px 18px var(--shadow-lift);
+}
+.mainPageHero .tagline {
+    margin: .6rem 0 0;
+    font-family: var(--font-main);   /* body copy, not a heading */
+    font-weight: 400;
+    font-size: clamp(1rem, .85rem + .8vw, 1.4rem);
+    color: var(--accent-deep);
+}
+
+.scrollCue {
+    display: inline-block;
+    margin-top: 2.5rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--accent-deep);
+    opacity: .8;
+    animation: bob 2.2s ease-in-out infinite;
+}
+.scrollCue:hover { opacity: 1; color: var(--accent-deep); }
+@keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(.45rem); }
+}
+
+/* feature cards keep the accent wash on top of the shared .card base */
+.featureCard { overflow: hidden; }
+.featureCard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, var(--accent-pale), transparent 65%);
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+.featureCard > * { position: relative; }
+.featureCard:hover::before { opacity: 1; }
+.featureCard .icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+/* roadmap */
+.roadmap {
+    list-style: none;
+    display: grid;
+    gap: .7rem;
+    margin: 1.5rem 0 0;
+    padding: 0;
+}
+.roadmap li {
+    position: relative;
+    padding: .9rem 1.1rem .9rem 3.1rem;
+    font-size: .96rem;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    transition:
+        transform .18s ease,
+        border-color .18s ease,
+        box-shadow .18s ease;
+}
+.roadmap li:hover {
+    transform: translateX(5px);
+    border-color: var(--accent);
+    box-shadow: 0 4px 14px var(--shadow);
+}
+.roadmap li::before {          /* the box */
+    content: "";
+    position: absolute;
+    left: 1.1rem;
+    top: 50%;
+    width: 1.15rem;
+    height: 1.15rem;
+    margin-top: -.575rem;
+    background-color: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    transition: background-color .25s ease, border-color .25s ease;
+}
+.roadmap li::after {           /* the tick */
+    content: "";
+    position: absolute;
+    left: 1.42rem;
+    top: 50%;
+    width: .35rem;
+    height: .62rem;
+    margin-top: -.42rem;
+    border-right: 2px solid var(--bg);
+    border-bottom: 2px solid var(--bg);
+    transform: rotate(45deg) scale(0);
+    transition: transform .3s var(--ease-spring) .1s;
+}
+.roadmap li[data-status="done"]::before {
+    background-color: var(--button);
+    border-color: var(--button);
+}
+.roadmap li[data-status="done"]::after { transform: rotate(45deg) scale(1); }
+.roadmap li[data-status="progress"]::before {
+    background-color: var(--accent-warm);
+    border-color: var(--accent-warm);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 var(--glow); }
+    50%      { box-shadow: 0 0 0 .45rem transparent; }
+}
+
+.roadmapMeter {
+    height: .5rem;
+    margin: 1.75rem 0 .5rem;
+    background-color: var(--accent-faded);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+}
+.roadmapMeter > span {
+    display: block;
+    height: 100%;
+    width: var(--pct, 0%);
+    background: linear-gradient(90deg, var(--accent), var(--button));
+    border-radius: var(--radius-pill);
+    transform-origin: left;
+    transition: transform 1.1s var(--ease-out) .2s;
+}
+.roadmapNote,
+.dlFormats {
+    margin: 0;
+    font-family: var(--font-code);
+    font-size: .78rem;
+    color: var(--ink-muted);
+}
+
+/* download band */
+.downloadBand {
+    padding: 5rem 1.5rem;
+    text-align: center;
+    color: var(--bg);
+    background: linear-gradient(135deg, var(--accent-deep), var(--accent-dark));
+}
+.downloadBand .sectionTitle { color: var(--bg); }
+.downloadBand .sectionTitle::after { background-color: var(--button); }
+.downloadBand p { color: var(--accent-faded); }
+
+.platformRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .6rem;
+    margin: 1.75rem 0 2.25rem;
+}
+.platformRow span {
+    padding: .4rem .9rem;
+    font-family: var(--font-code);
+    font-size: .82rem;
+    color: var(--bg);
+    background-color: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: var(--radius-pill);
+    transition: transform .2s ease, background-color .2s ease;
+}
+.platformRow span:hover {
+    transform: translateY(-3px);
+    background-color: rgba(255, 255, 255, .22);
+}
+
+/* scroll progress bar — degrades to an invisible 0-width bar */
+.scrollProgress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 50;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--button));
+    transform: scaleX(0);
+    transform-origin: left;
+}
+@supports (animation-timeline: scroll()) {
+    .scrollProgress {
+        animation: growProgress linear both;
+        animation-duration: 1ms;               /* Firefox needs a duration */
+        animation-timeline: scroll(root block); /* must follow the shorthand */
+    }
+}
+@keyframes growProgress { to { transform: scaleX(1); } }
+
+/* --------------------------------------------------------------------------
+   8. DOWNLOADS PAGE
+   Folded in from the inline <style> so you can delete that block.
+   -------------------------------------------------------------------------- */
+.dlHead { max-width: 46rem; }
+
+.dlBanner {
+    display: flex;
+    gap: .8rem;
+    align-items: flex-start;
+    margin: 1.75rem 0 2rem;
+    padding: 1rem 1.2rem;
+    font-size: .94rem;
+    line-height: 1.65;
+    background-color: var(--button-faded);
+    border: 1px solid var(--border);
+    border-inline-start: 4px solid var(--button);
+    border-radius: var(--radius);
+}
+.dlBannerIcon { font-size: 1.1rem; line-height: 1.45; }
+.dlBanner strong { font-family: var(--font-header); font-weight: 400; }
+
+.dlCard {
+    display: flex;
+    flex-direction: column;
+    gap: .65rem;
+}
+.dlCard h3 {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    margin: 0;
+    font-size: 1.2rem;
+}
+.dlNote {
+    margin: 0;
+    font-size: .88rem;
+    line-height: 1.6;
+    color: var(--ink-muted);
+}
+.dlAction { margin-top: auto; padding-top: .5rem; }
+
+.dlPanel {
+    margin-top: 3rem;
+    padding: 1.6rem 1.5rem;
+    background-color: var(--accent-pale);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+.dlPanel h3 {
+    margin: 0 0 .7rem;
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+.dlPanel p {
+    margin: 0 0 .8rem;
+    font-size: .94rem;
+    line-height: 1.65;
+    color: var(--ink-muted);
+}
+.dlPanel p:last-child { margin-bottom: 0; }
+.dlPanel a { color: var(--accent-dark); }
+
+.dlPkgs {
+    display: grid;
+    gap: .55rem;
+    margin: 1.1rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+.dlPkgs li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: .3rem .8rem;
+    padding: .6rem .8rem;
+    font-size: .88rem;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+.dlSoon {
+    margin-inline-start: auto;
+    font-family: var(--font-code);
+    font-size: .7rem;
+    color: var(--ink-muted);
+}
+
+/* --------------------------------------------------------------------------
+   9. UTILITIES & HTML ELEMENTS
+   -------------------------------------------------------------------------- */
+.centerMe { text-align: center; }
+
+.taskList {
+    list-style: none;
+    padding-inline-start: 0;
+}
+.taskList input { margin-inline-end: 8px; }
+
+code {
+    padding: 0 3px;
+    font-family: var(--font-code);
+    font-size: .9em;
+    background-color: var(--accent-pale);   /* was hardcoded #eeeeee */
+    border-radius: 3px;
+}
+pre {
+    padding: 1rem 1.1rem;
+    overflow-x: auto;
+    font-size: .85rem;
+    line-height: 1.6;
+    background-color: var(--accent-pale);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+pre code {
+    padding: 0;
+    font-size: inherit;
+    background: none;
+    border-radius: 0;
+}
+
+table { border-collapse: collapse; width: 100%; }
+th, td {
+    padding: .55rem .7rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+th { font-family: var(--font-header); font-weight: 400; }
+
+hr {
+    height: 1px;
+    margin: 2.5rem 0;
+    border: 0;
+    background-color: var(--border);
+}
+
+/* --------------------------------------------------------------------------
+   10. RESPONSIVE / REDUCED MOTION / PRINT
+   -------------------------------------------------------------------------- */
+@media (max-width: 60rem) {
+    .sideNav {
+        position: static;
+        width: auto;
+        max-height: none;
+        margin-bottom: var(--nav-gap);
+    }
+    .pushAside { margin-inline-start: 0; }
+}
+
+@media (max-width: 52rem) {
+    .section { padding: 3.5rem 1.25rem; }
+    .section--split { grid-template-columns: 1fr; gap: 2rem; }
+    .section--flip > *:first-child { order: 0; }
+    .dlPanel { padding: 1.25rem 1.15rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    /* looping / decorative motion only — reveal states never applied */
+    .mainPageHero,
+    .mainPageHero > *,
+    .scrollCue,
+    .roadmap li[data-status="progress"]::before,
+    .scrollProgress { animation: none; }
+
+    :is(.btn, .bigFatDownloadButton, .button, .dlBtn)::after { content: none; }
+
+    :is(.card, .featureCard, .dlCard, .roadmap li,
+        .btn, .bigFatDownloadButton, .button, .dlBtn,
+        .platformRow span):hover { transform: none; }
+
+    .card:hover .cardIcon,
+    .featureCard:hover .icon,
+    .dlCard:hover .dlIcon { transform: none; }
+}
+
+@media print {
+    .topNav, .sideNav, .scrollProgress, .scrollCue, footer { display: none; }
+    .pushAside { margin: 0; }
+    body { margin: 0; color: black; }
+    .section { padding: 1rem 0; }
+    a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .8em; }
+}

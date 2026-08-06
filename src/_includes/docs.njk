@@ -1,0 +1,23 @@
+---
+layout: base.njk
+---
+
+<nav class="sideNav">
+   <h2>Freecord Docs</h2>
+
+    <a href="/">Home</a>
+    <a href="/downloads/">Download</a>
+    <a href="/tour/">Tour</a>
+    <a href="/docs/">Docs</a>
+
+    <ul>
+        <!-- Installation and Setup -->
+        <li><b>Installing and Setup</b></li>
+        <li><a href="/docs/setup/installation">Installation</a></li>
+        <li><a href="/docs/setup/software">Software</a></li>
+    </ul>
+</nav>
+
+<main class="pushAside">
+    {{ content | safe }}
+</main>
