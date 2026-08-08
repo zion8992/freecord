@@ -11,11 +11,11 @@ nvm install 24
 
 # install dependencies
 echo "$0: Install dependencies"
-npm install @11ty/eleventy
+npm install
 
 # run 11ty
 echo "$0: Build site"
-npx @11ty/eleventy
+npm run build
 
 # debug
 echo "[debug] $0: ls _site"

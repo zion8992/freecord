@@ -1,0 +1,3 @@
+node_modules # deepest object in the universe
+package-lock.json # knockoff version of the normal package.json
+_site # the output generated from 11ty
