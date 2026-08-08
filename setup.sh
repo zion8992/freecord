@@ -24,3 +24,6 @@ mkdir -p public
 # copy the 11ty out to public
 echo "$0: Moving 11ty site to public"
 mv _site public
+
+echo "[DEBUG] $0: ls public/"
+ls public
