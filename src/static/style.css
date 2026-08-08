@@ -31,7 +31,7 @@
     --shadow: rgba(27, 42, 56, .10);       /* ink at 10% */
     --shadow-lift: rgba(27, 42, 56, .16);  /* ink at 16% */
     --glow: rgba(75, 141, 199, .28);       /* accent at 28% */
-    --hero-core: #88B1D2;        /* the blue already in your hero gradient */
+    --hero-core: #88B1D2;        /* the blue in hero gradient */
 
     /* MOTION — was repeated 11x inline */
     --ease-out: cubic-bezier(.22, .61, .36, 1);
@@ -43,7 +43,7 @@
     --radius-pill: 999px;
     --measure: 64rem;            /* max content width */
 
-    /* NAVIGATION — --nav-gap was used but never defined */
+    /* NAVIGATION */
     --nav-gap: 15px;
     --side-nav-w: 225px;
 }
@@ -61,17 +61,16 @@ html { -webkit-text-size-adjust: 100%; }
     html { scroll-behavior: smooth; }
 }
 
-/* Smooth cross-page navigation where supported, plain loads elsewhere. */
+
 @view-transition { navigation: auto; }
 
 body {
-    font-family: var(--font-main);   /* was var(--font--main) — typo */
+    font-family: var(--font-main);  
     font-size: 1rem;
     line-height: 1.65;
     color: var(--ink);
     background-color: var(--bg);
-    /* footer is display:none, so the old 200px reservation was dead space */
-    margin-bottom: 3rem;
+    margin-bottom:400px;
 }
 
 /* Form controls do not inherit font-family from body. */

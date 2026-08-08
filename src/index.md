@@ -35,9 +35,10 @@ title: "Main Page"
             <li data-status="planned">Messaging and Content Freedom</li>
         </ul>
     </div>
+    <a href="#whyFreecord" class="scrollCue" aria-label="Jump to features" style="font-size:110px;"><i class="bi bi-arrow-down"></i></a>
 </section>
 
-<section class="section">
+<section class="section" id="whyFreecord">
     <div class="reveal" style="text-align: center;">
         <h2 class="sectionTitle">Why Freecord</h2>
     </div>
@@ -59,10 +60,11 @@ title: "Main Page"
         </article>
     </div>
     <br><br>
-    <a href="/downloads" class="bigFatDownloadButton">Download Now</a>
+    <a href="/downloads" class="bigFatDownloadButton">Download Now</a><br><br>
+    <a href="#supportUs" class="scrollCue" aria-label="Jump to features" style="font-size:110px;"><i class="bi bi-arrow-down"></i></a>
 </section>
 
-<section class="section">
+<section class="section" id="supportUs">
     <div class="sectionInner section--flip">
         <div style="text-align:center;" class="reveal reveal--right">
             <h2 class="sectionTitle">Support the development</h2>

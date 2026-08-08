@@ -220,7 +220,7 @@ codebase. We are working hard every day to get mobile versions ready.</p>
 </article>
 
 <article class="dlCard reveal reveal--zoom" data-status="none" style="--i: 3;">
-    <h3><span class="dlIcon" aria-hidden="true"></span> BSD</h3>
+    <h3><span class="dlIcon" aria-hidden="true"><i class="bi bi-x"></i></span>BSD</h3>
     <span class="dlStatus">No builds yet</span>
     <p class="dlNote">FreeBSD and OpenBSD build from source today. Ports and pkg entries welcome.</p>
     <p class="dlFormats">Formats: ports &middot; pkg</p>
