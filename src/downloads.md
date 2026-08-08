@@ -184,7 +184,8 @@ codebase. We are working hard every day to get mobile versions ready.</p>
 <div class="dlBanner">
     <span class="dlBannerIcon" aria-hidden="true">&#128736;</span>
     <div>
-        <strong>No binary releases yet.</strong> Freecord is still in heavy development. Building from source takes about <b>30 Seconds</b> and works on every platform.
+        <strong>No binary releases yet.</strong> Freecord is still in heavy development. <br>
+        Building from source takes about <b>30 Seconds</b> and works on every platform.
     </div>
 </div>
 
