@@ -17,13 +17,6 @@ npm install @11ty/eleventy
 echo "$0: Build site"
 npx @11ty/eleventy
 
-# make the directory that pages will copy
-echo "$0: Creating 'public'"
-mkdir -p public
-
-# copy the 11ty out to public
-echo "$0: Moving 11ty site to public"
-mv _site public
-
-echo "[DEBUG] $0: ls public/"
-ls public
+# debug
+echo "[debug] $0: ls _site"
+ls _site
