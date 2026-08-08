@@ -1,3 +1,7 @@
+Tour is a work in progress. If you want to work on this page:
+<p><a href="/docs/contributing" class="bigFatDownloadButton bigFatDownloadButton--ghost">Contribute to Freecord</a></p>
+
+<!--
 <style>
 :root {
   /* extra tokens used by the tour */
@@ -302,3 +306,4 @@
   show(initial >= 0 ? initial : 0, { writeHash: initial >= 0, push: false });
 })();
 </script>
+-->
