@@ -200,6 +200,8 @@ title: "Clients"
 }
 </style>
 
+If you want to add software to the list. Join the chat server [here](/links/chat).
+
 <div class="cb" id="client-browser">
   <div class="cb-toolbar">
     <div class="cb-searchrow">

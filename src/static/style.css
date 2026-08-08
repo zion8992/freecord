@@ -265,13 +265,24 @@ a:hover {
     font-size: 1.2rem;
     background-color: var(--accent-faded);
     border-radius: 12px;
-    transition: background-color .25s ease, transform .3s var(--ease-spring);
+    transform-origin: center;
+    transition: background-color .25s ease;
 }
+
+/* Icon animation: bounce/pop on card hover, self-contained keyframes
+   (no dependency on external easing vars, so it always fires). */
+@keyframes iconPop {
+    0%   { transform: scale(1)    translateY(0); }
+    35%  { transform: scale(1.18) translateY(-4px); }
+    60%  { transform: scale(.94)  translateY(1px); }
+    100% { transform: scale(1.06) translateY(-2px); }
+}
+
 .card:hover .cardIcon,
 .featureCard:hover .icon,
 .dlCard:hover .dlIcon {
     background-color: var(--accent);
-    transform: rotate(-8deg) scale(1.07);
+    animation: iconPop .45s ease-out forwards;
 }
 
 .card h3,
@@ -309,6 +320,7 @@ a:hover {
     color: var(--button-dark);
     background-color: var(--button-faded);
 }
+
 
 /* --------------------------------------------------------------------------
    5. SCROLL REVEAL

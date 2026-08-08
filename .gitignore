@@ -1,3 +1,4 @@
-node_modules # deepest object in the universe
-package-lock.json # knockoff version of the normal package.json
-_site # the output generated from 11ty
+# largest objects in the universe
+node_modules
+package-lock.json
+_site

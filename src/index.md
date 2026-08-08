@@ -6,7 +6,7 @@ title: "Main Page"
 
 <div class="mainPageHero">
     <h1 class="title">Freecord</h1>
-    <h2 class="tagline">The chat app you've all been waiting for!</h2>
+    <h2 class="tagline">Where Humans connect freely</h2>
     <p><a href="/tour" class="bigFatDownloadButton">Take a tour</a></p>
     <a href="#features" class="scrollCue" aria-label="Jump to features" style="font-size:110px;"><i class="bi bi-arrow-down"></i></a>
 </div>
@@ -19,8 +19,7 @@ title: "Main Page"
             work in progress, but we aim to do everything Discord does &mdash; and more.
         </p>
         <p class="sectionLead">
-            No proprietary protocol, no single company holding the keys, and an
-            export path for everything you put in.
+            We have a well-documented protocol &mdash; this allows everyone to make software for Freecord!
         </p>
         <a href="/downloads" class="bigFatDownloadButton">Download Now</a>
     </div>
@@ -46,35 +45,33 @@ title: "Main Page"
         <article class="featureCard reveal reveal--zoom" style="--i: 0;">
             <div class="icon" aria-hidden="true">&#128274;</div>
             <h3>Yours to host</h3>
-            <p>Run your own server or join someone else's. There's no central
-               instance that can lock you out.</p>
+            <p>Run your own server or join someone else's. There is no central instance or community.</p>
         </article>
         <article class="featureCard reveal reveal--zoom" style="--i: 1;">
             <div class="icon" aria-hidden="true">&#128230;</div>
-            <h3>Open formats</h3>
-            <p>Messages, settings and history export as plain JSON. Nothing
-               proprietary to reverse-engineer.</p>
+            <h3>Decentralized Authentication</h3>
+            <p>Create <b>one</b> account and use it everywere.</p>
         </article>
         <article class="featureCard reveal reveal--zoom" style="--i: 2;">
             <div class="icon" aria-hidden="true">&#129513;</div>
             <h3>Extensible</h3>
-            <p>Server-side addons and custom channel types, scriptable without
-               waiting for us to ship a feature.</p>
+            <p>Server-side modifications are possible allowing for you to create custom channel types, custom ranks and roles and more!</p>
         </article>
     </div>
     <br><br>
     <a href="/downloads" class="bigFatDownloadButton">Download Now</a>
 </section>
 
-<section class="section section--tinted">
-    <div class="sectionInner section--split section--flip">
-        <div class="reveal reveal--right">
+<section class="section">
+    <div class="sectionInner section--flip">
+        <div style="text-align:center;" class="reveal reveal--right">
             <h2 class="sectionTitle">Support the development</h2>
             <p class="sectionLead">
-                Freecord is built in the open. Code, docs, translations and bug
-                reports all move it forward.
+                Freecord is built open. Code, docs and bug
+                reports are all available on <a href="https://codeberg.org/zion8992/freecord">Codeberg</a>.
             </p>
-            <p><a href="/contributing" class="bigFatDownloadButton bigFatDownloadButton--ghost">Read the guide</a></p>
+            <p><a href="/docs/contributing" class="bigFatDownloadButton bigFatDownloadButton--ghost">Want to help? Read the guide</a></p>
+            <p>You don't need to know how to code to help out with Freecord</p>
         </div>
         <div class="reveal reveal--left" style="--i: 1;">
             <!-- screenshot, contributor grid, or a repo-stats block -->
@@ -85,10 +82,10 @@ title: "Main Page"
 <section class="downloadBand">
     <div class="reveal">
         <h2 class="sectionTitle">Download the beta</h2>
-        <p>Freecord is available on all platforms.</p>
+        <p>Freecord is available on all platforms. We are working to support Freecord on even more.</p>
         <div class="platformRow">
-            <span>Windows</span><span>macOS</span><span>Linux</span>
-            <span>Android</span><span>iOS</span><span>Web</span>
+            <span>Windows</span><span>macOS</span><span>Linux</span><span>BSD</span>
+            <!--<span>Android</span><span>iOS</span><span>Web</span>-->
         </div>
         <a href="/downloads" class="bigFatDownloadButton">Download Now</a>
     </div>
