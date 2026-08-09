@@ -26,17 +26,19 @@ The auth server stores all user data.
     - Emoji Packs
     - User Public and Private Keys (unless the user wants to store them somewhere else, e.g. on the client)
 
+The auth server can store as many users as it wants.
+
 The reason for the auth server storing Emoji Packs and File attachments is to reduce the amount of data a server needs to store.<br>
 The idea for the Freecord server is to be easy to self-host and better than discord, that's why, we give user's the freedom to have as many emoji packs as they want, on their Auth Server.<br>
 
 ### E2EE DMs
 
-Auth server also allows the user to do E2EE (end-to-end-encrypted) DMs with other user's.<br>
+Auth server also allows the user to do E2EE (end-to-end-encryption) DMs with other user's.<br>
 These DMs are fully encrypted.
 
 ### Authentication Keys
 
-The Auth Server also stores the user auth keys.<br>
+The Auth Server also stores the user's auth keys.<br>
 These keys are used to sign, encrypt, decrypt and send messages as the user.<br>
 The keys are encrypted with the user's password.<br>
 
@@ -46,6 +48,7 @@ A user can be represented by their handles:<br>
 Username Handle (can change): `bob@auth.im`<br>
 UUID Handle (never changes): `0a5dbfee9@auth.im`<br>
 An Alias (if the Auth Server supports it): `bobAlias@auth.im`<br>
+An other Alias (if the Auth Server supports it): `bob@google.im`<br>
 
 ## Client
 
