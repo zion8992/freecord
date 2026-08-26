@@ -313,6 +313,17 @@ To add software to the list, please join the matrix instance [here](/links/chat)
       "source": "https://codeberg.org/zion8992/freecord",
       "mobile": false,
       "tags": ["server", "Work In Progress", "CLI"]
+    },
+    {
+      "name": "Zanar",
+      "description": "Simple and featured web-based GUI client for Desktop and Web.",
+      "authors": ["zion8992"],
+      "website": "https://codeberg.org/zion8992/zanar",
+      "download": "https://codeberg.org/zion8992/zanar/releases",
+      "openSource": true,
+      "source": "https://codeberg.org/zion8992/zanar",
+      "mobile": false,
+      "tags": ["client", "Work In Progress", "GUI"]
     }
   ];
 
@@ -397,7 +408,7 @@ To add software to the list, please join the matrix instance [here](/links/chat)
       c.openSource
         ? '<span class="cb-badge">Open source</span>'
         : '<span class="cb-badge cb-badge--closed">Closed source</span>',
-      `<span class="cb-badge">${c.mobile ? "Mobile" : "Desktop / web"}</span>`
+      `<span class="cb-badge">${c.mobile ? "Mobile" : "Desktop"}</span>`
     ].join("");
     const tagPills = (c.tags || []).map((t) => `<span class="cb-tag">${esc(t)}</span>`).join("");
     const dl = hasLink(c.download)
