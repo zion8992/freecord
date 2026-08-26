@@ -1,4 +1,8 @@
-<h1>Install Guide</h1>
+---
+title: "Install Guide"
+---
+
+# Installation Guide
 
 **Freecord is just a protocol**, meaning, there is no single client or server to use.<br>
 You can find a list of known clients [here](/docs/setup/clients).
@@ -21,7 +25,7 @@ Currently, there are no available downloads for Freecord.
 - That all!
 
 **2. Clone Source**<br>
-Once you have downloaded Go, clone the source code from [Codeberg](https://codeberg.org/zion8992/freecord).
+Once you have downloaded Go, clone the source code from [Codeberg](/links/source).
 
 ```sh
 git clone https://codeberg.org/zion8992/freecord.git

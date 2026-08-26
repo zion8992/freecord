@@ -1,5 +1,5 @@
 ---
-title: "Clients"
+title: "Software"
 ---
 
 ## Freecord Software
@@ -200,7 +200,7 @@ title: "Clients"
 }
 </style>
 
-If you want to add software to the list. Join the chat server [here](/links/chat).
+To add software to the list, please join the matrix instance [here](/links/chat).
 
 <div class="cb" id="client-browser">
   <div class="cb-toolbar">
@@ -211,8 +211,8 @@ If you want to add software to the list. Join the chat server [here](/links/chat
     </div>
 
     <div class="cb-filters" id="cb-filters" hidden>
-      <label class="cb-field"><span>Name</span><input id="f-name" type="text" placeholder="e.g. Cinny"></label>
-      <label class="cb-field"><span>Description</span><input id="f-desc" type="text" placeholder="contains…"></label>
+      <label class="cb-field"><span>Name</span><input id="f-name" type="text" placeholder="e.g. Zanar"></label>
+      <label class="cb-field"><span>Description</span><input id="f-desc" type="text" placeholder="contains"></label>
       <label class="cb-field"><span>Author</span><select id="f-author"></select></label>
       <label class="cb-field"><span>Open source</span>
         <select id="f-oss"><option value="">Any</option><option value="yes">Yes</option><option value="no">No</option></select>
@@ -249,7 +249,7 @@ If you want to add software to the list. Join the chat server [here](/links/chat
   </div>
 
   <div class="cb-grid" id="cb-grid"></div>
-  <p class="cb-empty" id="cb-empty" hidden>No clients match your search or filters.</p>
+  <p class="cb-empty" id="cb-empty" hidden>No software matches your search or filters.</p>
 
   <div class="cb-modal" id="cb-modal" hidden role="dialog" aria-modal="true" aria-labelledby="cb-modal-title">
     <div class="cb-modal-panel" id="cb-modal-panel">
@@ -276,7 +276,6 @@ If you want to add software to the list. Join the chat server [here](/links/chat
 
   /* EXAMPLE
 
-
   {
   "name": "SchildiChat",
   "description": "Matrix client forked from Element with a message-bubble layout, unified chat list and extra customisation options. Ships on Android, iOS, web and desktop, with full end-to-end encryption and support for any homeserver you point it at.",
@@ -298,7 +297,7 @@ If you want to add software to the list. Join the chat server [here](/links/chat
       "description": "Official Freecord client. Always up-to-date with the Freecord protocol.",
       "authors": ["zonomic"],
       "website": "https://codeberg.org/zion8992/freecord",
-      "download": "/docs/setup/installation",
+      "download": "/freecord/docs/setup/installation",
       "openSource": true,
       "source": "https://codeberg.org/zion8992/freecord",
       "mobile": false,
@@ -309,7 +308,7 @@ If you want to add software to the list. Join the chat server [here](/links/chat
       "description": "Official Freecord server. Always up-to-date with the Freecord protocol.",
       "authors": ["zonomic"],
       "website": "https://codeberg.org/zion8992/freecord",
-      "download": "/docs/setup/installation",
+      "download": "/freecord/docs/setup/installation",
       "openSource": true,
       "source": "https://codeberg.org/zion8992/freecord",
       "mobile": false,
@@ -423,7 +422,7 @@ If you want to add software to the list. Join the chat server [here](/links/chat
     const list = sortClients(CLIENTS.filter(matches));
     el.grid.innerHTML = list.map(cardHTML).join("");
     el.empty.hidden = list.length > 0;
-    el.count.textContent = `Showing ${list.length} of ${CLIENTS.length} clients`;
+    el.count.textContent = `Showing ${list.length} of ${CLIENTS.length} apps`;
   }
 
   /* ------------------------------- modal ------------------------------- */

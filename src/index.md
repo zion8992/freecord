@@ -70,7 +70,7 @@ title: "Main Page"
             <h2 class="sectionTitle">Support the development</h2>
             <p class="sectionLead">
                 Freecord is built open. Code, docs and bug
-                reports are all available on <a href="https://codeberg.org/zion8992/freecord">Codeberg</a>.
+                reports are all available on <a href="/links/source">Codeberg</a>.
             </p>
             <p><a href="/docs/contributing" class="bigFatDownloadButton bigFatDownloadButton--ghost">Want to help? Read the guide</a></p>
             <p>You don't need to know how to code to help out with Freecord</p>
