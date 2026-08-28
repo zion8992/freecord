@@ -4,10 +4,13 @@ title: "Install Guide"
 
 # Installation Guide
 
-**Freecord is just a protocol**, meaning, there is no single client or server to use.<br>
-You can find a list of known clients [here](/docs/setup/clients).
+### Read-First
 
-As of Freecord 1.x.x, there are two components:
+**Freecord is just a protocol**, meaning, there is no single client or server to use.<br>
+This guide is specific to the official client and server.
+If you are interested in the community-built software, you can find a list of known software [here](/docs/setup/clients).
+
+### Components
 
 **1. Client**<br>
 Used to connect to a chat server.
@@ -15,14 +18,15 @@ Used to connect to a chat server.
 **2. Server**<br>
 Self-hostable. Clients connect to the server to chat.
 
-<h3 id="download">Download Freecord</h3>
-Currently, there are no available downloads for Freecord.
+### Download Freecord
 
-<h3 id="fromSource">Compile From Source</h3>
+[Downloads Page](/downloads)
+
+### Compile From Source
 
 **1. Requirements**<br>
 - [Golang](https://go.dev/dl/) `1.26.4` or later
-- That all!
+- nothing else, seriously
 
 **2. Clone Source**<br>
 Once you have downloaded Go, clone the source code from [Codeberg](/links/source).
@@ -31,13 +35,13 @@ Once you have downloaded Go, clone the source code from [Codeberg](/links/source
 git clone https://codeberg.org/zion8992/freecord.git
 ```
 
-This will clone Freecord.
+This will clone Freecord's source tree.
 
 **3. Build**<br>
 
-To build, enter the directory for what you want to compile.<br>
-*Server*: `src/server`<br>
-*Client*: `src/client`<br>
+To build a specific component, enter the directory of the component<br>
+*Server Code*: `src/server`<br>
+*Client Code*: `src/client`<br>
 
 ```sh
 cd src/<directory>
@@ -47,14 +51,6 @@ cd src/<directory>
 or use `go build` to create an executable:<br>
 ```sh
 cd src/<directory>
-go build -o app ./src/
+go build -o app ./cmd/ # for client
+go build -o app ./src/ # for server
 ```
-
-**4. Cross-Compiling**
-
-Golang even allows you to cross-compile:<br>
-```sh
-GOOS=<os> GOARCH=<arch> go build -o app ./src
-```
-
-You can use `go tool dist list` to view a list of supported OSes and Architectures.

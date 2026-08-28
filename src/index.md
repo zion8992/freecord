@@ -24,15 +24,15 @@ title: "Main Page"
         <a href="/downloads" class="bigFatDownloadButton">Download Now</a>
     </div>
     <div class="reveal reveal--right" style="--i: 1;">
-        <div class="roadmapMeter" aria-hidden="true"><span style="--pct: 12%;"></span></div>
+        <div class="roadmapMeter" aria-hidden="true"><span style="--pct: 16%;"></span></div>
         <p class="roadmapNote">Roadmap</p>
         <ul class="roadmap">
-            <li data-status="progress">Decentralized Authentication</li>
-            <li data-status="planned">Encryption</li>
-            <li data-status="planned">Custom Channel Types</li>
-            <li data-status="planned">Server-side Scripting (Addons)</li>
-            <li data-status="planned">Peer-to-Peer Fully-encrypted DMs</li>
-            <li data-status="planned">Messaging and Content Freedom</li>
+            <li data-status="progress">Text Channels & Categories</li> <!-- 17% -->
+            <li data-status="planned">Permission System</li> <!-- 33% -->
+            <li data-status="planned">Decentralized Authentication</li> <!-- 50% -->
+            <li data-status="planned">Encryption</li> <!-- 67% -->
+            <li data-status="planned">Custom Channels</li> <!-- 83% -->
+            <li data-status="planned">Addons</li> <!-- 100% -->
         </ul>
     </div>
     <a href="#whyFreecord" class="scrollCue" aria-label="Jump to features" style="font-size:110px;"><i class="bi bi-arrow-down"></i></a>
