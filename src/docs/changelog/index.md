@@ -7,21 +7,22 @@ title: "Freecord Changelog"
 NOTE: Only the two most recent versions are listed here. Older versions are listed on [Codeberg](/links/source).
 
 Changelog `eb7751c24f6562f4bcdd5f2e95876eb171d4db02` .. `d4c5def8846b3176b928879e5a65a81d639b003d`.<br> 
-Full changelog [here](https://codeberg.org/zion8992/freecord/compare/eb7751c24f6562f4bcdd5f2e95876eb171d4db02..d4c5def8846b3176b928879e5a65a81d639b003d).
+Full changelog [here](https://codeberg.org/zion8992/freecord/compare/61678597ac60c30bc575aa79787ffb53ac316991..45b40df94bf6964b654d4c4984c505d4c23f953c#diff-80cae3044e65bf0bf3306183317aeb2d29637588).
+
+**Repository**
+- Update README
+- Update LICENSE
+- Migrate issues to codeberg
 
 **Protocol**
-- Moved errors to an `Error` struct
-- Added various constants for names like `session_token`, `username` and `loginSuccess`
+- Add name constants for default port, path and scheme
 
 **Server**
-- Replace `http.Error()` with `a.writeError()` on `routes.go`
-- Moved `maxRegisterBody` and `maxLoginBody` to `maxAuthBody`
-- Replaced old unicode username validator with new one
-- Updated `MySQLDSN` function to use the driver config creator instead of `fmt.Sprintf`
-- Make `clients` map unexported on `Hub`
-- Add flags for setting debug and database file
-- Use `varchar(255)` instead of `varchar(60)` for storing password hashes
+- Fixed #2: add duplicate key detection on store.go
+- Fixed MySQLDSN function
 
 **Client**
-- Remove unused `printSpace()` function
-- Added support for the new error handling
+- Moved config loading logic to backend thread
+- Added theming
+- Store session cookie on login
+- Refactored client source code
