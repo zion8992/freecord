@@ -1,527 +1,521 @@
 ---
-title: "Software"
+title: "Sofware"
 ---
 
-## Freecord Software
+If there is any software that is missing, please submit it [here](/links/chat)
 
+<!-- ====================================================================
+     SOFTWARE DIRECTORY
+     ==================================================================== -->
 <style>
-:root {
-  /* extra tokens used by the client list */
-  --text: #1c2126;
-  --text-muted: #5d6b78;
-  --surface: #ffffff;
-  --surface-alt: #f4f7f9;
-  --border: #dde4ea;
-  --radius: 10px;
-  --shadow-card: 0 1px 2px rgba(20, 30, 40, .06);
-  --shadow-lift: 0 6px 18px rgba(20, 30, 40, .12);
-  --shadow-modal: 0 20px 60px rgba(20, 30, 40, .28);
-}
+/* ---- layout ------------------------------------------------------- */
+.sw { font-family: var(--font-main); color: var(--ink); max-width: var(--measure); margin: 0 auto; }
+.sw * { box-sizing: border-box; }
 
-.cb [hidden] { display: none !important; }
-.cb, .cb input, .cb select, .cb button { font-family: var(--font-main); }
-.cb { color: var(--text); }
-.cb {
-  margin-right: 20px;
+.sw-toolbar {
+    display: grid; gap: .9rem;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 1rem 1.1rem; margin-bottom: 1.25rem;
 }
+.sw-row { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.sw-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-muted); min-width: 4.5rem; }
 
-/* ---------- toolbar ---------- */
-.cb-toolbar {
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: .85rem;
-  margin-bottom: 1.25rem;
+.sw-search {
+    flex: 1 1 14rem; font: inherit; font-size: .95rem; color: var(--ink);
+    padding: .55rem .9rem; border: 1px solid var(--border); border-radius: var(--radius-pill);
+    background: var(--bg); outline: none; transition: box-shadow .2s var(--ease-out);
 }
-.cb-searchrow { display: flex; gap: .5rem; flex-wrap: wrap; }
-.cb-search {
-  flex: 1 1 16rem;
-  min-width: 0;
-  padding: .6rem .75rem;
-  font-size: 1rem;
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-}
-.cb-search:focus-visible,
-.cb select:focus-visible,
-.cb input:focus-visible,
-.cb button:focus-visible,
-.cb-card:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-.cb-btn {
-  padding: .6rem .9rem;
-  font-size: .9rem;
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  cursor: pointer;
-}
-.cb-btn:hover { background: var(--accent-faded); border-color: var(--accent); }
-.cb-btn[aria-expanded="true"] { background: var(--accent-faded); border-color: var(--accent); }
+.sw-search:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--glow); }
 
-/* ---------- filters ---------- */
-.cb-filters {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-  gap: .7rem;
-  margin-top: .85rem;
-  padding-top: .85rem;
-  border-top: 1px solid var(--border);
+.sw-select {
+    font: inherit; font-size: .85rem; color: var(--ink);
+    padding: .4rem 2rem .4rem .8rem; border: 1px solid var(--border);
+    border-radius: var(--radius-pill); background: var(--bg); cursor: pointer;
 }
-.cb-field { display: flex; flex-direction: column; gap: .3rem; font-size: .78rem; }
-.cb-field > span { font-weight: 600; letter-spacing: .02em; color: var(--text-muted); text-transform: uppercase; }
-.cb-field input, .cb-field select {
-  padding: .45rem .5rem;
-  font-size: .9rem;
-  color: var(--text);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-}
-.cb-field--wide { grid-column: 1 / -1; }
-.cb-tagbox {
-  display: flex; flex-wrap: wrap; gap: .3rem .8rem;
-  max-height: 6.5rem; overflow-y: auto;
-  padding: .5rem;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-}
-.cb-tagbox label {
-  display: inline-flex; align-items: center; gap: .3rem;
-  font-size: .85rem; text-transform: none; letter-spacing: 0;
-  cursor: pointer;
-}
-.cb-count { margin: .8rem 0 0; font-size: .82rem; color: var(--text-muted); }
+.sw-select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--glow); }
 
-/* ---------- cards ---------- */
-.cb-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
-  gap: 1rem;
+.sw-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.sw-chip {
+    font: inherit; font-size: .82rem; cursor: pointer; color: var(--ink);
+    padding: .3rem .8rem; border: 1px solid var(--border); border-radius: var(--radius-pill);
+    background: var(--bg); transition: all .18s var(--ease-out);
 }
-.cb-card {
-  display: flex; flex-direction: column; gap: .6rem;
-  padding: 1rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-card);
-  cursor: pointer;
-  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
-}
-.cb-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: var(--shadow-lift); }
-.cb-card h3 {
-  margin: 0;
-  font-family: var(--font-header);
-  font-size: 1.2rem;
-  font-weight: 400;
-}
-.cb-card p { margin: 0; font-size: .9rem; line-height: 1.5; color: var(--text-muted); }
-.cb-badges { display: flex; flex-wrap: wrap; gap: .35rem; }
-.cb-badge {
-  padding: .12rem .5rem;
-  font-size: .7rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-faded);
-  border-radius: 999px;
-}
-.cb-badge--closed { color: #7a5c1e; background: #f3e4c3; }
-.cb-tags { display: flex; flex-wrap: wrap; gap: .3rem; }
-.cb-tag {
-  padding: .12rem .5rem;
-  font-family: var(--font-code);
-  font-size: .72rem;
-  color: var(--text-muted);
-  background: var(--surface-alt);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-}
-.cb-card-foot { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-top: auto; padding-top: .3rem; }
-.cb-author { font-size: .78rem; color: var(--text-muted); }
-.cb-dl {
-  padding: .45rem .8rem;
-  font-size: .85rem; font-weight: 600; text-decoration: none; white-space: nowrap;
-  color: #10391a;
-  background: var(--button);
-  border: 1px solid var(--button);
-  border-radius: 6px;
-}
-.cb-dl:hover { background: var(--button-faded); }
-.cb-dl[aria-disabled="true"] { color: var(--text-muted); background: var(--surface-alt); border-color: var(--border); cursor: not-allowed; }
-.cb-empty {
-  padding: 2rem; margin: 0;
-  font-size: .95rem; text-align: center; color: var(--text-muted);
-  background: var(--surface-alt);
-  border: 1px dashed var(--border);
-  border-radius: var(--radius);
-}
+.sw-chip:hover { border-color: var(--accent); color: var(--accent-dark); }
+.sw-chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.sw-chip--tag { font-family: var(--font-code); font-size: .75rem; }
+.sw-chip--toggle i { margin-right: .3rem; }
 
-/* ---------- modal ---------- */
-.cb-modal {
-  position: fixed; inset: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: center;
-  padding: 1rem;
-  background: rgba(15, 22, 30, .55);
-}
-.cb-modal-panel {
-  width: min(34rem, 100%);
-  max-height: 85vh; overflow-y: auto;
-  padding: 1.4rem;
-  background: var(--bg);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-modal);
-}
-.cb-modal-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
-.cb-modal-head h2 { margin: 0; font-family: var(--font-header); font-size: 1.5rem; font-weight: 400; }
-.cb-close {
-  padding: .2rem .55rem;
-  font-size: 1.3rem; line-height: 1.2;
-  color: var(--text-muted);
-  background: none; border: 1px solid var(--border); border-radius: 6px;
-  cursor: pointer;
-}
-.cb-close:hover { color: var(--text); background: var(--surface-alt); }
-.cb-modal-desc { margin: .8rem 0 1.1rem; font-size: .95rem; line-height: 1.6; }
-.cb-dl-list { display: grid; grid-template-columns: max-content 1fr; gap: .55rem 1rem; margin: 0; font-size: .9rem; }
-.cb-dl-list dt { font-weight: 600; color: var(--text-muted); }
-.cb-dl-list dd { margin: 0; overflow-wrap: anywhere; }
-.cb-dl-list a { color: var(--accent); }
-.cb-modal-foot { margin-top: 1.4rem; text-align: right; }
+.sw-summary { display: flex; justify-content: space-between; align-items: center; font-size: .85rem; color: var(--ink-muted); margin-bottom: .75rem; }
+.sw-reset { font: inherit; font-size: .85rem; color: var(--accent-dark); background: none; border: 0; cursor: pointer; text-decoration: underline; }
 
-@media (prefers-reduced-motion: reduce) {
-  .cb-card { transition: none; }
-  .cb-card:hover { transform: none; }
+/* ---- grid & cards -------------------------------------------------- */
+.sw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+.sw-empty { grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: var(--ink-muted); }
+
+.sw-card {
+    display: flex; flex-direction: column; gap: .6rem; text-align: left; font: inherit; color: inherit;
+    background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-lg);
+    padding: 1rem 1.1rem; cursor: pointer; box-shadow: 0 1px 3px var(--shadow);
+    transition: transform .25s var(--ease-out), box-shadow .25s var(--ease-out), border-color .25s;
 }
+.sw-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px var(--shadow-lift); border-color: var(--accent-faded); }
+.sw-card:focus-visible { outline: none; box-shadow: 0 0 0 4px var(--glow); }
+.sw-card--discontinued { opacity: .7; }
+
+.sw-head { display: flex; gap: .8rem; align-items: center; }
+.sw-icon { width: 48px; height: 48px; flex: none; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--border); background: var(--surface); }
+.sw-icon--lg { width: 64px; height: 64px; }
+.sw-name { font-family: var(--font-header); font-weight: 400; font-size: 1.15rem; margin: 0 0 .25rem; }
+.sw-badges { display: flex; flex-wrap: wrap; gap: .3rem; }
+
+.sw-badge { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; padding: .15rem .55rem; border-radius: var(--radius-pill); }
+.sw-badge--kind         { background: var(--accent-pale); color: var(--accent-dark); }
+.sw-badge--stable       { background: var(--button-faded); color: var(--button-dark); }
+.sw-badge--beta         { background: var(--accent-faded); color: var(--accent-deep); }
+.sw-badge--alpha        { background: color-mix(in srgb, var(--accent-warm) 18%, white); color: var(--accent-warm); }
+.sw-badge--discontinued { background: var(--border); color: var(--ink-muted); }
+.sw-badge--planned      { background: transparent; color: var(--ink-muted); border: 1px dashed var(--ink-muted); }
+
+.sw-tagline { margin: 0; font-size: .92rem; color: var(--ink-muted); line-height: 1.4; }
+.sw-platforms { display: flex; flex-wrap: wrap; gap: .5rem; font-size: 1.1rem; color: var(--ink-muted); }
+.sw-platforms i { transition: color .18s; }
+.sw-card:hover .sw-platforms i { color: var(--accent); }
+
+.sw-tags { display: flex; flex-wrap: wrap; gap: .3rem; }
+.sw-tag { font-family: var(--font-code); font-size: .72rem; padding: .1rem .5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-pill); color: var(--ink-muted); }
+
+.sw-foot { display: flex; justify-content: space-between; align-items: center; gap: .5rem; margin-top: auto; padding-top: .4rem; font-size: .8rem; color: var(--ink-muted); }
+.sw-foot span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.sw-lfd { flex: none; color: var(--button-dark); font-weight: 600; }
+.sw-lfd i { margin-right: .25rem; }
+
+/* ---- modal ---------------------------------------------------------- */
+.sw-modal { border: 0; padding: 0; width: min(640px, calc(100% - 2rem)); border-radius: var(--radius-lg); box-shadow: 0 24px 64px var(--shadow-lift); color: var(--ink); font-family: var(--font-main); }
+.sw-modal::backdrop { background: rgba(27, 42, 56, .55); backdrop-filter: blur(3px); }
+.sw-modal[open] { animation: sw-pop .3s var(--ease-spring); }
+@keyframes sw-pop { from { transform: scale(.94) translateY(8px); opacity: 0; } }
+
+.sw-modal-body { padding: 1.6rem 1.75rem 1.75rem; position: relative; }
+.sw-close { position: absolute; top: .8rem; right: .8rem; width: 34px; height: 34px; border: 0; border-radius: 50%; background: var(--surface); color: var(--ink-muted); font-size: 1.1rem; cursor: pointer; transition: background .18s; }
+.sw-close:hover { background: var(--accent-faded); color: var(--accent-deep); }
+.sw-modal .sw-name { font-size: 1.6rem; }
+.sw-modal .sw-tagline { margin: .8rem 0 1.2rem; font-size: 1rem; }
+
+.sw-dl { display: grid; grid-template-columns: max-content 1fr; gap: .6rem 1.2rem; margin: 0 0 1.4rem; font-size: .92rem; }
+.sw-dl dt { color: var(--ink-muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; padding-top: .15rem; }
+.sw-dl dd { margin: 0; }
+.sw-dl .sw-platforms { font-size: .95rem; color: var(--ink); gap: .8rem; }
+.sw-dl .sw-platforms i { color: var(--accent); margin-right: .3rem; }
+.sw-yes { color: var(--button-dark); font-weight: 600; }
+.sw-no  { color: var(--ink-muted); }
+.sw-author-link { color: var(--accent-dark); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+.sw-author-link:hover { color: var(--accent-deep); }
+
+.sw-links { display: flex; flex-wrap: wrap; gap: .5rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.sw-btn { display: inline-flex; align-items: center; gap: .4rem; font: inherit; font-size: .9rem; font-weight: 600; text-decoration: none; padding: .55rem 1.1rem; border-radius: var(--radius-pill); border: 1px solid var(--border); color: var(--accent-dark); background: var(--bg); transition: all .18s var(--ease-out); }
+.sw-btn:hover { border-color: var(--accent); background: var(--accent-pale); }
+.sw-btn--primary { background: var(--button); border-color: var(--button); color: #fff; }
+.sw-btn--primary:hover { background: var(--button-hover); border-color: var(--button-hover); }
 </style>
 
-To add software to the list, please join the matrix instance [here](/links/chat).
+<div id="sw-app" class="sw"></div>
 
-<div class="cb" id="client-browser">
-  <div class="cb-toolbar">
-    <div class="cb-searchrow">
-      <input class="cb-search" id="cb-q" type="search" placeholder="Search clients by name, description, author or tag…" aria-label="Search clients">
-      <button class="cb-btn" id="cb-toggle" type="button" aria-expanded="false" aria-controls="cb-filters">Filters</button>
-      <button class="cb-btn" id="cb-reset" type="button">Reset</button>
-    </div>
-
-    <div class="cb-filters" id="cb-filters" hidden>
-      <label class="cb-field"><span>Name</span><input id="f-name" type="text" placeholder="e.g. Zanar"></label>
-      <label class="cb-field"><span>Description</span><input id="f-desc" type="text" placeholder="contains"></label>
-      <label class="cb-field"><span>Author</span><select id="f-author"></select></label>
-      <label class="cb-field"><span>Open source</span>
-        <select id="f-oss"><option value="">Any</option><option value="yes">Yes</option><option value="no">No</option></select>
-      </label>
-      <label class="cb-field"><span>Mobile</span>
-        <select id="f-mobile"><option value="">Any</option><option value="yes">Mobile</option><option value="no">Desktop / web only</option></select>
-      </label>
-      <label class="cb-field"><span>Website link</span>
-        <select id="f-website"><option value="">Any</option><option value="yes">Has link</option><option value="no">No link</option></select>
-      </label>
-      <label class="cb-field"><span>Download link</span>
-        <select id="f-download"><option value="">Any</option><option value="yes">Has link</option><option value="no">No link</option></select>
-      </label>
-      <label class="cb-field"><span>Source link</span>
-        <select id="f-source"><option value="">Any</option><option value="yes">Has link</option><option value="no">No link</option></select>
-      </label>
-      <label class="cb-field"><span>Tag match</span>
-        <select id="f-tagmode"><option value="any">Any selected</option><option value="all">All selected</option></select>
-      </label>
-      <label class="cb-field"><span>Sort</span>
-        <select id="f-sort">
-          <option value="name-asc">Name A–Z</option>
-          <option value="name-desc">Name Z–A</option>
-          <option value="author-asc">Author A–Z</option>
-        </select>
-      </label>
-      <div class="cb-field cb-field--wide">
-        <span id="f-tags-label">Tags</span>
-        <div class="cb-tagbox" id="f-tags" role="group" aria-labelledby="f-tags-label"></div>
-      </div>
-    </div>
-
-    <p class="cb-count" id="cb-count" role="status" aria-live="polite"></p>
-  </div>
-
-  <div class="cb-grid" id="cb-grid"></div>
-  <p class="cb-empty" id="cb-empty" hidden>No software matches your search or filters.</p>
-
-  <div class="cb-modal" id="cb-modal" hidden role="dialog" aria-modal="true" aria-labelledby="cb-modal-title">
-    <div class="cb-modal-panel" id="cb-modal-panel">
-      <div class="cb-modal-head">
-        <h2 id="cb-modal-title"></h2>
-        <button class="cb-close" id="cb-modal-close" type="button" aria-label="Close details">&times;</button>
-      </div>
-      <p class="cb-modal-desc" id="cb-modal-desc"></p>
-      <dl class="cb-dl-list" id="cb-modal-meta"></dl>
-      <div class="cb-modal-foot" id="cb-modal-foot"></div>
-    </div>
-  </div>
-</div>
+<!-- ====================================================================
+     DATA — pure JSON. Edit this block to add/remove software.
+     Optional fields: tagline, icon, license, languages, links.website,
+     links.repo, links.docs. Authors can be a string or {name, url}.
+     Platforms reference the keys in "platforms"; icon = Bootstrap Icon id.
+     ==================================================================== -->
+<script type="application/json" id="sw-data">
+{
+  "platforms": {
+    "linux":   { "label": "Linux",   "icon": "ubuntu" },
+    "windows": { "label": "Windows", "icon": "windows" },
+    "macos":   { "label": "macOS",   "icon": "apple" },
+    "android": { "label": "Android", "icon": "android2" },
+    "ios":     { "label": "iOS",     "icon": "phone" },
+    "web":     { "label": "Web",     "icon": "browser-chrome" },
+    "cli":     { "label": "Terminal","icon": "terminal" },
+    "docker":  { "label": "Docker",  "icon": "box-seam" }
+  },
+  "software": [
+    {
+      "name": "Lumen",
+      "tagline": "The reference desktop & web client with end-to-end encryption and spaces.",
+      "kind": "Client",
+      "icon": "https://placehold.co/96x96/4b8dc7/ffffff?text=L",
+      "authors": [{ "name": "Core Team", "url": "https://example.org/team" }, "Ada Lovelace"],
+      "platforms": ["web", "linux", "windows", "macos"],
+      "tags": ["e2ee", "voice", "video", "spaces", "reference"],
+      "license": "Apache-2.0",
+      "openSource": true,
+      "languages": ["TypeScript", "Rust"],
+      "status": "Stable",
+      "lookingForDevelopers": false,
+      "links": {
+        "website": "https://example.org/lumen",
+        "repo": "https://example.org/git/lumen",
+        "download": "https://example.org/lumen/download",
+        "docs": "https://example.org/lumen/docs"
+      }
+    },
+    {
+      "name": "Pocket",
+      "tagline": "Lightweight mobile client focused on battery life.",
+      "kind": "Client",
+      "authors": ["Grace Hopper"],
+      "platforms": ["android", "ios"],
+      "tags": ["e2ee", "mobile", "push-notifications"],
+      "license": "GPL-3.0",
+      "openSource": true,
+      "languages": ["Kotlin", "Swift"],
+      "status": "Beta",
+      "lookingForDevelopers": true,
+      "links": {
+        "repo": "https://example.org/git/pocket",
+        "download": "https://example.org/pocket/releases"
+      }
+    },
+    {
+      "name": "termchat",
+      "tagline": "A keyboard-driven TUI client.",
+      "kind": "Client",
+      "authors": ["Ada Lovelace"],
+      "platforms": ["cli", "linux", "macos"],
+      "tags": ["tui", "vim-keys", "scriptable"],
+      "license": "MIT",
+      "openSource": true,
+      "languages": ["Go"],
+      "status": "Alpha",
+      "lookingForDevelopers": true,
+      "links": {
+        "repo": "https://example.org/git/termchat",
+        "download": "https://example.org/git/termchat/releases"
+      }
+    },
+    {
+      "name": "Beacon",
+      "tagline": "Reference homeserver. Federation, media, and search out of the box.",
+      "kind": "Server",
+      "icon": "https://placehold.co/96x96/1c4165/ffffff?text=B",
+      "authors": [{ "name": "Core Team", "url": "https://example.org/team" }],
+      "platforms": ["linux", "docker"],
+      "tags": ["federation", "postgres", "media", "reference"],
+      "license": "AGPL-3.0",
+      "openSource": true,
+      "languages": ["Rust"],
+      "status": "Stable",
+      "lookingForDevelopers": false,
+      "links": {
+        "website": "https://example.org/beacon",
+        "repo": "https://example.org/git/beacon",
+        "download": "https://example.org/beacon/install",
+        "docs": "https://example.org/beacon/docs"
+      }
+    },
+    {
+      "name": "Tinyserv",
+      "tagline": "Single-binary server for small communities and self-hosters.",
+      "kind": "Server",
+      "authors": ["Linus T."],
+      "platforms": ["linux", "windows", "macos", "docker"],
+      "tags": ["sqlite", "single-binary", "self-hosting"],
+      "license": "MIT",
+      "openSource": true,
+      "languages": ["Go"],
+      "status": "Beta",
+      "lookingForDevelopers": true,
+      "links": {
+        "repo": "https://example.org/git/tinyserv",
+        "download": "https://example.org/git/tinyserv/releases"
+      }
+    },
+    {
+      "name": "Keymaster",
+      "tagline": "Standalone auth server with OIDC, passkeys, and TOTP.",
+      "kind": "Authserver",
+      "authors": [{ "name": "Core Team", "url": "https://example.org/team" }, "Grace Hopper"],
+      "platforms": ["linux", "docker"],
+      "tags": ["oidc", "passkeys", "sso"],
+      "license": "Apache-2.0",
+      "openSource": true,
+      "languages": ["Rust"],
+      "status": "Alpha",
+      "lookingForDevelopers": true,
+      "links": {
+        "repo": "https://example.org/git/keymaster",
+        "download": "https://example.org/git/keymaster/releases",
+        "docs": "https://example.org/keymaster/docs"
+      }
+    },
+    {
+      "name": "ChatCorp Bridge",
+      "tagline": "Commercial hosted server with SLA and enterprise support.",
+      "kind": "Server",
+      "authors": ["ChatCorp Inc."],
+      "platforms": ["web"],
+      "tags": ["hosted", "enterprise", "sla"],
+      "license": "Proprietary",
+      "openSource": false,
+      "status": "Stable",
+      "lookingForDevelopers": false,
+      "links": {
+        "website": "https://example.com/chatcorp",
+        "download": "https://example.com/chatcorp/signup"
+      }
+    },
+    {
+      "name": "OldTalk",
+      "tagline": "The original prototype client. No longer maintained.",
+      "kind": "Client",
+      "authors": ["Ada Lovelace"],
+      "platforms": ["linux"],
+      "tags": ["prototype", "legacy"],
+      "license": "MIT",
+      "openSource": true,
+      "languages": ["Python"],
+      "status": "Discontinued",
+      "lookingForDevelopers": false,
+      "links": {
+        "repo": "https://example.org/git/oldtalk",
+        "download": "https://example.org/git/oldtalk/archive"
+      }
+    },
+    {
+      "name": "Glass",
+      "tagline": "Planned native client for wearables and TVs.",
+      "kind": "Client",
+      "authors": ["Linus T."],
+      "platforms": ["android"],
+      "tags": ["wearables", "tv"],
+      "openSource": true,
+      "status": "Planned",
+      "lookingForDevelopers": true,
+      "links": {
+        "repo": "https://example.org/git/glass",
+        "download": "https://example.org/git/glass"
+      }
+    }
+  ]
+}
+</script>
 
 <script>
 (() => {
-  "use strict";
+    /* ---- data ---------------------------------------------------- */
+    const DATA      = JSON.parse(document.getElementById('sw-data').textContent);
+    const PLATFORMS = DATA.platforms || {};
+    const SOFTWARE  = DATA.software  || [];
 
-  /* ------------------------------------------------------------------
-     Client data — plain JSON, no schema beyond these keys.
-     Swap this literal for `await fetch("clients.json").then(r => r.json())`
-     and nothing else in this file has to change.
-  ------------------------------------------------------------------ */
+    const KINDS    = ['Client', 'Server', 'Authserver'];
+    const STATUSES = ['Stable', 'Beta', 'Alpha', 'Discontinued', 'Planned'];
 
-  /* EXAMPLE
+    /* ---- helpers ------------------------------------------------- */
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c =>
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+    const authorName = a => typeof a === 'string' ? a : a.name;
+    const authorUrl  = a => typeof a === 'string' ? null : a.url;
+    const uniqSorted = arr => [...new Set(arr)].sort((a, b) => a.localeCompare(b));
+    const platform   = key => PLATFORMS[key] || { label: key, icon: 'cpu' };
 
-  {
-  "name": "SchildiChat",
-  "description": "Matrix client forked from Element with a message-bubble layout, unified chat list and extra customisation options. Ships on Android, iOS, web and desktop, with full end-to-end encryption and support for any homeserver you point it at.",
-  "authors": ["SpiritCroc", "SchildiChat contributors"],
-  "website": "https://schildi.chat",
-  "download": "https://schildi.chat/android/next/",
-  "openSource": true,
-  "source": "https://github.com/SchildiChat/schildichat-android",
-  "mobile": true,
-  "tags": ["client", "server", "Matrix", "Encrypted", "Mobile", "Android", "iOS", "Desktop", "Web", "Fork", "Self-hostable"]
-}
+    // Authors are derived from the software list — not stored separately.
+    const AUTHORS = (() => {
+        const map = new Map();
+        SOFTWARE.forEach(s => (s.authors || []).forEach(a => {
+            if (!map.has(authorName(a))) map.set(authorName(a), a);
+        }));
+        return [...map.values()].sort((a, b) => authorName(a).localeCompare(authorName(b)));
+    })();
+    const TAGS       = uniqSorted(SOFTWARE.flatMap(s => s.tags || []));
+    const PLAT_KEYS  = uniqSorted(SOFTWARE.flatMap(s => s.platforms || []));
 
+    /* ---- state --------------------------------------------------- */
+    const state = { q: '', kind: '', status: '', platform: '', author: '', tags: new Set(), openSource: false, lfd: false };
+    const isFiltered = () => state.q || state.kind || state.status || state.platform || state.author || state.tags.size || state.openSource || state.lfd;
 
-  */
-
-  const CLIENTS = [
-    {
-      "name": "Official Client",
-      "description": "Official Freecord client. Always up-to-date with the Freecord protocol.",
-      "authors": ["zonomic"],
-      "website": "https://codeberg.org/zion8992/freecord",
-      "download": "/freecord/docs/setup/installation",
-      "openSource": true,
-      "source": "https://codeberg.org/zion8992/freecord",
-      "mobile": false,
-      "tags": ["client", "Work In Progress", "CLI"]
-    },
-    {
-      "name": "Official Server",
-      "description": "Official Freecord server. Always up-to-date with the Freecord protocol.",
-      "authors": ["zonomic"],
-      "website": "https://codeberg.org/zion8992/freecord",
-      "download": "/freecord/docs/setup/installation",
-      "openSource": true,
-      "source": "https://codeberg.org/zion8992/freecord",
-      "mobile": false,
-      "tags": ["server", "Work In Progress", "CLI"]
-    },
-    {
-      "name": "Zanar",
-      "description": "Simple and featured web-based GUI client for Desktop and Web.",
-      "authors": ["zion8992"],
-      "website": "https://codeberg.org/zion8992/zanar",
-      "download": "https://codeberg.org/zion8992/zanar/releases",
-      "openSource": true,
-      "source": "https://codeberg.org/zion8992/zanar",
-      "mobile": false,
-      "tags": ["client", "Work In Progress", "GUI"]
+    function matches(s) {
+        if (state.kind     && s.kind   !== state.kind)                                 return false;
+        if (state.status   && s.status !== state.status)                               return false;
+        if (state.platform && !(s.platforms || []).includes(state.platform))           return false;
+        if (state.author   && !(s.authors || []).some(a => authorName(a) === state.author)) return false;
+        if (state.openSource && !s.openSource)                                         return false;
+        if (state.lfd      && !s.lookingForDevelopers)                                 return false;
+        for (const t of state.tags) if (!(s.tags || []).includes(t))                   return false;
+        if (state.q) {
+            const hay = [s.name, s.tagline, s.license, ...(s.tags || []), ...(s.languages || []),
+                         ...(s.authors || []).map(authorName)].join(' ').toLowerCase();
+            if (!hay.includes(state.q.toLowerCase())) return false;
+        }
+        return true;
     }
-  ];
 
-  /* ---------------------------- helpers ---------------------------- */
-  const $ = (id) => document.getElementById(id);
-  const esc = (s) => String(s).replace(/[&<>"']/g, (c) =>
-    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const hasLink = (v) => typeof v === "string" && v.trim() !== "";
-  const norm = (s) => String(s ?? "").toLowerCase();
-  const authorList = (c) => (c.authors || []).join(", ");
-  const slug = (s) => norm(s).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    /* ---- render pieces ------------------------------------------- */
+    const badge = (text, cls) => `<span class="sw-badge sw-badge--${cls}">${esc(text)}</span>`;
+    const statusBadge = s => badge(s.status, s.status.toLowerCase());
+    const iconImg = (s, lg) => s.icon
+        ? `<img class="sw-icon${lg ? ' sw-icon--lg' : ''}" src="${esc(s.icon)}" alt="" loading="lazy">` : '';
+    const platIcons = (s, withLabel) => (s.platforms || []).map(k => {
+        const p = platform(k);
+        return `<span title="${esc(p.label)}"><i class="bi bi-${esc(p.icon)}" aria-hidden="true"></i>${withLabel ? esc(p.label) : `<span class="sw-sr" hidden>${esc(p.label)}</span>`}</span>`;
+    }).join('');
+    const authorsHtml = s => (s.authors || []).map(a => authorUrl(a)
+        ? `<a class="sw-author-link" href="${esc(authorUrl(a))}" target="_blank" rel="noopener">${esc(authorName(a))}</a>`
+        : esc(authorName(a))).join(', ');
 
-  // "" = any, "yes"/"no" otherwise
-  const triBool = (mode, value) => !mode || (mode === "yes" ? value === true : value !== true);
-  const triLink = (mode, value) => !mode || (mode === "yes" ? hasLink(value) : !hasLink(value));
-
-  const el = {
-    q: $("cb-q"), toggle: $("cb-toggle"), reset: $("cb-reset"), filters: $("cb-filters"),
-    name: $("f-name"), desc: $("f-desc"), author: $("f-author"), oss: $("f-oss"),
-    mobile: $("f-mobile"), website: $("f-website"), download: $("f-download"),
-    source: $("f-source"), tagmode: $("f-tagmode"), sort: $("f-sort"), tags: $("f-tags"),
-    grid: $("cb-grid"), empty: $("cb-empty"), count: $("cb-count"),
-    modal: $("cb-modal"), modalTitle: $("cb-modal-title"), modalDesc: $("cb-modal-desc"),
-    modalMeta: $("cb-modal-meta"), modalFoot: $("cb-modal-foot"), modalClose: $("cb-modal-close")
-  };
-
-  const byId = new Map(CLIENTS.map((c) => [slug(c.name), c]));
-
-  /* ------------------- build dynamic filter options ------------------- */
-  const authors = [...new Set(CLIENTS.flatMap((c) => c.authors || []))].sort((a, b) => a.localeCompare(b));
-  el.author.innerHTML = '<option value="">Any author</option>' +
-    authors.map((a) => `<option value="${esc(a)}">${esc(a)}</option>`).join("");
-
-  const tags = [...new Set(CLIENTS.flatMap((c) => c.tags || []))].sort((a, b) => a.localeCompare(b));
-  el.tags.innerHTML = tags.map((t) =>
-    `<label><input type="checkbox" value="${esc(t)}"> ${esc(t)}</label>`).join("");
-
-  /* ---------------------------- filtering ---------------------------- */
-  function selectedTags() {
-    return [...el.tags.querySelectorAll("input:checked")].map((i) => i.value);
-  }
-
-  function matches(c) {
-    const q = norm(el.q.value.trim());
-    if (q) {
-      const haystack = [c.name, c.description, authorList(c), (c.tags || []).join(" ")].map(norm).join(" ");
-      if (!q.split(/\s+/).every((word) => haystack.includes(word))) return false;
+    function card(s, i) {
+        return `
+        <button type="button" class="sw-card${s.status === 'Discontinued' ? ' sw-card--discontinued' : ''}" data-index="${i}">
+            <div class="sw-head">
+                ${iconImg(s)}
+                <div>
+                    <h3 class="sw-name">${esc(s.name)}</h3>
+                    <div class="sw-badges">${badge(s.kind, 'kind')}${statusBadge(s)}</div>
+                </div>
+            </div>
+            ${s.tagline ? `<p class="sw-tagline">${esc(s.tagline)}</p>` : ''}
+            <div class="sw-platforms">${platIcons(s)}</div>
+            <div class="sw-tags">${(s.tags || []).slice(0, 4).map(t => `<span class="sw-tag">${esc(t)}</span>`).join('')}
+                ${(s.tags || []).length > 4 ? `<span class="sw-tag">+${s.tags.length - 4}</span>` : ''}</div>
+            <div class="sw-foot">
+                <span>by ${esc((s.authors || []).map(authorName).join(', '))}</span>
+                ${s.lookingForDevelopers ? `<span class="sw-lfd"><i class="bi bi-people-fill"></i>Devs wanted</span>` : ''}
+            </div>
+        </button>`;
     }
-    if (el.name.value.trim() && !norm(c.name).includes(norm(el.name.value.trim()))) return false;
-    if (el.desc.value.trim() && !norm(c.description).includes(norm(el.desc.value.trim()))) return false;
-    if (el.author.value && !(c.authors || []).includes(el.author.value)) return false;
-    if (!triBool(el.oss.value, c.openSource)) return false;
-    if (!triBool(el.mobile.value, c.mobile)) return false;
-    if (!triLink(el.website.value, c.website)) return false;
-    if (!triLink(el.download.value, c.download)) return false;
-    if (!triLink(el.source.value, c.source)) return false;
 
-    const picked = selectedTags();
-    if (picked.length) {
-      const own = c.tags || [];
-      const ok = el.tagmode.value === "all"
-        ? picked.every((t) => own.includes(t))
-        : picked.some((t) => own.includes(t));
-      if (!ok) return false;
-    }
-    return true;
-  }
-
-  function sortClients(list) {
-    const cmp = {
-      "name-asc": (a, b) => a.name.localeCompare(b.name),
-      "name-desc": (a, b) => b.name.localeCompare(a.name),
-      "author-asc": (a, b) => authorList(a).localeCompare(authorList(b)) || a.name.localeCompare(b.name)
-    }[el.sort.value];
-    return [...list].sort(cmp);
-  }
-
-  /* ----------------------------- rendering ----------------------------- */
-  function cardHTML(c) {
-    const id = slug(c.name);
-    const badges = [
-      c.openSource
-        ? '<span class="cb-badge">Open source</span>'
-        : '<span class="cb-badge cb-badge--closed">Closed source</span>',
-      `<span class="cb-badge">${c.mobile ? "Mobile" : "Desktop"}</span>`
-    ].join("");
-    const tagPills = (c.tags || []).map((t) => `<span class="cb-tag">${esc(t)}</span>`).join("");
-    const dl = hasLink(c.download)
-      ? `<a class="cb-dl" href="${esc(c.download)}" target="_blank" rel="noopener noreferrer">Download</a>`
-      : '<span class="cb-dl" aria-disabled="true">No download</span>';
-
-    return `
-      <article class="cb-card" data-id="${esc(id)}" tabindex="0" role="button"
-               aria-label="Show details for ${esc(c.name)}">
-        <h3>${esc(c.name)}</h3>
-        <div class="cb-badges">${badges}</div>
-        <p>${esc(c.description)}</p>
-        <div class="cb-tags">${tagPills}</div>
-        <div class="cb-card-foot">
-          <span class="cb-author">${esc(authorList(c) || "Unknown author")}</span>
-          ${dl}
+    function toolbar() {
+        const opt = (v, label = v) => `<option value="${esc(v)}">${esc(label)}</option>`;
+        return `
+        <div class="sw-toolbar">
+            <div class="sw-row">
+                <input class="sw-search" type="search" placeholder="Search name, tag, language, author…" aria-label="Search software">
+                <select class="sw-select" data-filter="status" aria-label="Status"><option value="">Any status</option>${STATUSES.map(s => opt(s)).join('')}</select>
+                <select class="sw-select" data-filter="platform" aria-label="Platform"><option value="">Any platform</option>${PLAT_KEYS.map(k => opt(k, platform(k).label)).join('')}</select>
+                <select class="sw-select" data-filter="author" aria-label="Author"><option value="">Any author</option>${AUTHORS.map(a => opt(authorName(a))).join('')}</select>
+            </div>
+            <div class="sw-row">
+                <span class="sw-label">Kind</span>
+                <div class="sw-chips" data-group="kind">
+                    <button type="button" class="sw-chip" data-value="" aria-pressed="true">All</button>
+                    ${KINDS.map(k => `<button type="button" class="sw-chip" data-value="${esc(k)}" aria-pressed="false">${esc(k)}</button>`).join('')}
+                </div>
+                <div class="sw-chips" style="margin-left:auto">
+                    <button type="button" class="sw-chip sw-chip--toggle" data-toggle="openSource" aria-pressed="false"><i class="bi bi-code-slash"></i>Open source</button>
+                    <button type="button" class="sw-chip sw-chip--toggle" data-toggle="lfd" aria-pressed="false"><i class="bi bi-people-fill"></i>Looking for devs</button>
+                </div>
+            </div>
+            <div class="sw-row">
+                <span class="sw-label">Tags</span>
+                <div class="sw-chips" data-group="tags">
+                    ${TAGS.map(t => `<button type="button" class="sw-chip sw-chip--tag" data-value="${esc(t)}" aria-pressed="false">#${esc(t)}</button>`).join('')}
+                </div>
+            </div>
         </div>
-      </article>`;
-  }
+        <div class="sw-summary"><span class="sw-count"></span><button type="button" class="sw-reset" hidden>Clear filters</button></div>
+        <div class="sw-grid"></div>
+        <dialog class="sw-modal" aria-labelledby="sw-modal-title"></dialog>`;
+    }
 
-  function render() {
-    const list = sortClients(CLIENTS.filter(matches));
-    el.grid.innerHTML = list.map(cardHTML).join("");
-    el.empty.hidden = list.length > 0;
-    el.count.textContent = `Showing ${list.length} of ${CLIENTS.length} apps`;
-  }
+    function detail(s) {
+        const yesno = b => b ? `<span class="sw-yes"><i class="bi bi-check-circle-fill"></i> Yes</span>` : `<span class="sw-no"><i class="bi bi-x-circle"></i> No</span>`;
+        const L = s.links || {};
+        const link = (url, label, icon, primary) => url
+            ? `<a class="sw-btn${primary ? ' sw-btn--primary' : ''}" href="${esc(url)}" target="_blank" rel="noopener"><i class="bi bi-${icon}"></i>${label}</a>` : '';
+        return `
+        <div class="sw-modal-body">
+            <button type="button" class="sw-close" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+            <div class="sw-head">
+                ${iconImg(s, true)}
+                <div>
+                    <h3 class="sw-name" id="sw-modal-title">${esc(s.name)}</h3>
+                    <div class="sw-badges">${badge(s.kind, 'kind')}${statusBadge(s)}
+                        ${s.lookingForDevelopers ? badge('Looking for developers', 'stable') : ''}</div>
+                </div>
+            </div>
+            ${s.tagline ? `<p class="sw-tagline">${esc(s.tagline)}</p>` : ''}
+            <dl class="sw-dl">
+                <dt>Authors</dt><dd>${authorsHtml(s) || '—'}</dd>
+                <dt>Platforms</dt><dd><div class="sw-platforms">${platIcons(s, true) || '—'}</div></dd>
+                <dt>Tags</dt><dd><div class="sw-tags">${(s.tags || []).map(t => `<span class="sw-tag">${esc(t)}</span>`).join('') || '—'}</div></dd>
+                <dt>Open source</dt><dd>${yesno(s.openSource)}</dd>
+                ${s.license   ? `<dt>License</dt><dd>${esc(s.license)}</dd>` : ''}
+                ${s.languages?.length ? `<dt>Languages</dt><dd>${s.languages.map(esc).join(', ')}</dd>` : ''}
+                <dt>Status</dt><dd>${esc(s.status)}</dd>
+                <dt>Needs developers</dt><dd>${yesno(s.lookingForDevelopers)}</dd>
+            </dl>
+            <div class="sw-links">
+                ${link(L.download, 'Download', 'download', true)}
+                ${link(L.website,  'Website',  'globe2')}
+                ${link(L.repo,     'Source',   'git')}
+                ${link(L.docs,     'Docs',     'book')}
+            </div>
+        </div>`;
+    }
 
-  /* ------------------------------- modal ------------------------------- */
-  let lastFocused = null;
+    /* ---- mount --------------------------------------------------- */
+    const root = document.getElementById('sw-app');
+    root.innerHTML = toolbar();
+    const grid   = root.querySelector('.sw-grid');
+    const count  = root.querySelector('.sw-count');
+    const reset  = root.querySelector('.sw-reset');
+    const modal  = root.querySelector('.sw-modal');
 
-  function link(url) {
-    return hasLink(url)
-      ? `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(url)}</a>`
-      : "—";
-  }
+    function update() {
+        const hits = SOFTWARE.map((s, i) => [s, i]).filter(([s]) => matches(s));
+        grid.innerHTML = hits.length
+            ? hits.map(([s, i]) => card(s, i)).join('')
+            : `<div class="sw-empty"><i class="bi bi-search" style="font-size:2rem"></i><p>Nothing matches these filters.</p></div>`;
+        count.textContent = `${hits.length} of ${SOFTWARE.length} projects`;
+        reset.hidden = !isFiltered();
+    }
 
-  function openModal(id) {
-    const c = byId.get(id);
-    if (!c) return;
-    lastFocused = document.activeElement;
+    /* ---- events -------------------------------------------------- */
+    root.querySelector('.sw-search').addEventListener('input', e => { state.q = e.target.value.trim(); update(); });
 
-    el.modalTitle.textContent = c.name;
-    el.modalDesc.textContent = c.description;
-    el.modalMeta.innerHTML = [
-      ["Author(s)", esc(authorList(c) || "—")],
-      ["Website", link(c.website)],
-      ["Download", link(c.download)],
-      ["Open source", c.openSource ? "Yes" : "No"],
-      ["Source code", c.openSource ? link(c.source) : "—"],
-      ["Mobile", c.mobile ? "Yes" : "No"],
-      ["Tags", (c.tags || []).length
-        ? `<span class="cb-tags">${c.tags.map((t) => `<span class="cb-tag">${esc(t)}</span>`).join("")}</span>`
-        : "—"]
-    ].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
+    root.querySelectorAll('.sw-select').forEach(sel =>
+        sel.addEventListener('change', e => { state[e.target.dataset.filter] = e.target.value; update(); }));
 
-    el.modalFoot.innerHTML = hasLink(c.download)
-      ? `<a class="cb-dl" href="${esc(c.download)}" target="_blank" rel="noopener noreferrer">Download ${esc(c.name)}</a>`
-      : "";
+    root.querySelector('[data-group="kind"]').addEventListener('click', e => {
+        const chip = e.target.closest('.sw-chip'); if (!chip) return;
+        state.kind = chip.dataset.value;
+        chip.parentElement.querySelectorAll('.sw-chip').forEach(c => c.setAttribute('aria-pressed', c === chip));
+        update();
+    });
 
-    el.modal.hidden = false;
-    el.modalClose.focus();
-  }
+    root.querySelector('[data-group="tags"]').addEventListener('click', e => {
+        const chip = e.target.closest('.sw-chip'); if (!chip) return;
+        const t = chip.dataset.value;
+        state.tags.has(t) ? state.tags.delete(t) : state.tags.add(t);
+        chip.setAttribute('aria-pressed', state.tags.has(t));
+        update();
+    });
 
-  function closeModal() {
-    el.modal.hidden = true;
-    if (lastFocused && document.contains(lastFocused)) lastFocused.focus();
-    lastFocused = null;
-  }
+    root.querySelectorAll('[data-toggle]').forEach(chip => chip.addEventListener('click', () => {
+        const k = chip.dataset.toggle;
+        state[k] = !state[k];
+        chip.setAttribute('aria-pressed', state[k]);
+        update();
+    }));
 
-  /* ------------------------------ events ------------------------------ */
-  el.toggle.addEventListener("click", () => {
-    const open = el.filters.hidden;
-    el.filters.hidden = !open;
-    el.toggle.setAttribute("aria-expanded", String(open));
-  });
+    reset.addEventListener('click', () => {
+        Object.assign(state, { q: '', kind: '', status: '', platform: '', author: '', openSource: false, lfd: false });
+        state.tags.clear();
+        root.querySelector('.sw-search').value = '';
+        root.querySelectorAll('.sw-select').forEach(s => s.value = '');
+        root.querySelectorAll('.sw-chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.value === ''));
+        update();
+    });
 
-  el.reset.addEventListener("click", () => {
-    el.q.value = el.name.value = el.desc.value = "";
-    [el.author, el.oss, el.mobile, el.website, el.download, el.source].forEach((s) => (s.value = ""));
-    el.tagmode.value = "any";
-    el.sort.value = "name-asc";
-    el.tags.querySelectorAll("input:checked").forEach((i) => (i.checked = false));
-    render();
-    el.q.focus();
-  });
+    grid.addEventListener('click', e => {
+        const c = e.target.closest('.sw-card'); if (!c) return;
+        modal.innerHTML = detail(SOFTWARE[+c.dataset.index]);
+        modal.showModal();
+    });
 
-  ["input", "change"].forEach((evt) => {
-    el.q.addEventListener(evt, render);
-    el.filters.addEventListener(evt, render);
-  });
+    modal.addEventListener('click', e => {
+        if (e.target === modal || e.target.closest('.sw-close')) modal.close();
+    });
 
-  // One delegated listener: card opens the modal, the download link does not.
-  el.grid.addEventListener("click", (e) => {
-    if (e.target.closest(".cb-dl")) return;
-    const card = e.target.closest(".cb-card");
-    if (card) openModal(card.dataset.id);
-  });
-
-  el.grid.addEventListener("keydown", (e) => {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    if (e.target.closest(".cb-dl")) return;
-    const card = e.target.closest(".cb-card");
-    if (!card) return;
-    e.preventDefault();
-    openModal(card.dataset.id);
-  });
-
-  el.modalClose.addEventListener("click", closeModal);
-  el.modal.addEventListener("click", (e) => { if (e.target === el.modal) closeModal(); });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !el.modal.hidden) closeModal();
-  });
-
-  render();
+    update();
 })();
 </script>
