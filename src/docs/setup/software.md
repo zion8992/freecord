@@ -126,6 +126,29 @@ If there is any software that is missing, please submit it [here](/links/chat)
      links.repo, links.docs. Authors can be a string or {name, url}.
      Platforms reference the keys in "platforms"; icon = Bootstrap Icon id.
      ==================================================================== -->
+
+<!--
+EXAMPLE:
+    {
+      "name": "Official Client",
+      "tagline": "Official Freecord Client",
+      "kind": "Client",
+      "authors": [{ "name": "Zonomic", "url": "https://example.org/" }, "Zonomic"],
+      "platforms": ["linux", "windows", "macos"],
+      "tags": ["cli"],
+      "license": "Zonomic Project License",
+      "openSource": true,
+      "languages": ["Go"],
+      "status": "alpha",
+      "lookingForDevelopers": true,
+      "links": {
+        "website": "https://example.org/lumen",
+        "repo": "https://example.org/git/lumen",
+        "download": "https://example.org/lumen/download",
+        "docs": "https://example.org/lumen/docs"
+    }
+-->
+
 <script type="application/json" id="sw-data">
 {
   "platforms": {
@@ -152,51 +175,40 @@ If there is any software that is missing, please submit it [here](/links/chat)
       "status": "alpha",
       "lookingForDevelopers": true,
       "links": {
-        "website": "https://example.org/lumen",
-        "repo": "https://example.org/git/lumen",
-        "download": "https://example.org/lumen/download",
-        "docs": "https://example.org/lumen/docs"
-    }
-    },
-        {
-      "name": "Lumen",
-      "tagline": "The reference desktop & web client with end-to-end encryption and spaces.",
-      "kind": "Client",
-      "icon": "https://placehold.co/96x96/4b8dc7/ffffff?text=L",
-      "authors": [{ "name": "Core Team", "url": "https://example.org/team" }, "Ada Lovelace"],
-      "platforms": ["web", "linux", "windows", "macos"],
-      "tags": ["e2ee", "voice", "video", "spaces", "reference"],
-      "license": "Apache-2.0",
-      "openSource": true,
-      "languages": ["TypeScript", "Rust"],
-      "status": "Stable",
-      "lookingForDevelopers": false,
-      "links": {
-        "website": "https://example.org/lumen",
-        "repo": "https://example.org/git/lumen",
-        "download": "https://example.org/lumen/download",
-        "docs": "https://example.org/lumen/docs"
-    }
+        "download": "https://codeberg.org/zion8992/freecord"
+        }
     },
     {
-      "name": "Lumen",
-      "tagline": "The reference desktop & web client with end-to-end encryption and spaces.",
-      "kind": "Client",
-      "icon": "https://placehold.co/96x96/4b8dc7/ffffff?text=L",
-      "authors": [{ "name": "Core Team", "url": "https://example.org/team" }, "Ada Lovelace"],
-      "platforms": ["web", "linux", "windows", "macos"],
-      "tags": ["e2ee", "voice", "video", "spaces", "reference"],
-      "license": "Apache-2.0",
+      "name": "Official Server",
+      "tagline": "Official Freecord Server",
+      "kind": "Server",
+      "authors": [{ "name": "Zonomic", "url": "https://example.org/" }, "Zonomic"],
+      "platforms": ["linux", "windows", "macos"],
+      "tags": ["cli"],
+      "license": "Zonomic Project License",
       "openSource": true,
-      "languages": ["TypeScript", "Rust"],
-      "status": "Stable",
-      "lookingForDevelopers": false,
+      "languages": ["Go"],
+      "status": "alpha",
+      "lookingForDevelopers": true,
       "links": {
-        "website": "https://example.org/lumen",
-        "repo": "https://example.org/git/lumen",
-        "download": "https://example.org/lumen/download",
-        "docs": "https://example.org/lumen/docs"
-      }
+        "download": "https://codeberg.org/zion8992/freecord"
+        }
+    },
+    {
+      "name": "Zanar",
+      "tagline": "A simple and updated Freecord client for both Desktop and Web.",
+      "kind": "Client",
+      "authors": [{ "name": "zion8992", "url": "https://zion8992.github.io/" }, "zion8992"],
+      "platforms": ["linux", "windows", "macos"],
+      "tags": ["cli"],
+      "license": "Zonomic Project License",
+      "openSource": true,
+      "languages": ["Go"],
+      "status": "alpha",
+      "lookingForDevelopers": true,
+      "links": {
+        "download": "https://codeberg.org/zion8992/zanar"
+        }
     }
   ]
 }
