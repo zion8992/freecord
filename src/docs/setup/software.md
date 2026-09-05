@@ -140,6 +140,25 @@ If there is any software that is missing, please submit it [here](/links/chat)
   },
   "software": [
     {
+      "name": "Official Client",
+      "tagline": "Official Freecord Client",
+      "kind": "Client",
+      "authors": [{ "name": "Zonomic", "url": "https://example.org/" }, "Zonomic"],
+      "platforms": ["linux", "windows", "macos"],
+      "tags": ["cli"],
+      "license": "Zonomic Project License",
+      "openSource": true,
+      "languages": ["Go"],
+      "status": "alpha",
+      "lookingForDevelopers": true,
+      "links": {
+        "website": "https://example.org/lumen",
+        "repo": "https://example.org/git/lumen",
+        "download": "https://example.org/lumen/download",
+        "docs": "https://example.org/lumen/docs"
+    }
+    },
+        {
       "name": "Lumen",
       "tagline": "The reference desktop & web client with end-to-end encryption and spaces.",
       "kind": "Client",
@@ -157,143 +176,26 @@ If there is any software that is missing, please submit it [here](/links/chat)
         "repo": "https://example.org/git/lumen",
         "download": "https://example.org/lumen/download",
         "docs": "https://example.org/lumen/docs"
-      }
+    }
     },
     {
-      "name": "Pocket",
-      "tagline": "Lightweight mobile client focused on battery life.",
+      "name": "Lumen",
+      "tagline": "The reference desktop & web client with end-to-end encryption and spaces.",
       "kind": "Client",
-      "authors": ["Grace Hopper"],
-      "platforms": ["android", "ios"],
-      "tags": ["e2ee", "mobile", "push-notifications"],
-      "license": "GPL-3.0",
-      "openSource": true,
-      "languages": ["Kotlin", "Swift"],
-      "status": "Beta",
-      "lookingForDevelopers": true,
-      "links": {
-        "repo": "https://example.org/git/pocket",
-        "download": "https://example.org/pocket/releases"
-      }
-    },
-    {
-      "name": "termchat",
-      "tagline": "A keyboard-driven TUI client.",
-      "kind": "Client",
-      "authors": ["Ada Lovelace"],
-      "platforms": ["cli", "linux", "macos"],
-      "tags": ["tui", "vim-keys", "scriptable"],
-      "license": "MIT",
-      "openSource": true,
-      "languages": ["Go"],
-      "status": "Alpha",
-      "lookingForDevelopers": true,
-      "links": {
-        "repo": "https://example.org/git/termchat",
-        "download": "https://example.org/git/termchat/releases"
-      }
-    },
-    {
-      "name": "Beacon",
-      "tagline": "Reference homeserver. Federation, media, and search out of the box.",
-      "kind": "Server",
-      "icon": "https://placehold.co/96x96/1c4165/ffffff?text=B",
-      "authors": [{ "name": "Core Team", "url": "https://example.org/team" }],
-      "platforms": ["linux", "docker"],
-      "tags": ["federation", "postgres", "media", "reference"],
-      "license": "AGPL-3.0",
-      "openSource": true,
-      "languages": ["Rust"],
-      "status": "Stable",
-      "lookingForDevelopers": false,
-      "links": {
-        "website": "https://example.org/beacon",
-        "repo": "https://example.org/git/beacon",
-        "download": "https://example.org/beacon/install",
-        "docs": "https://example.org/beacon/docs"
-      }
-    },
-    {
-      "name": "Tinyserv",
-      "tagline": "Single-binary server for small communities and self-hosters.",
-      "kind": "Server",
-      "authors": ["Linus T."],
-      "platforms": ["linux", "windows", "macos", "docker"],
-      "tags": ["sqlite", "single-binary", "self-hosting"],
-      "license": "MIT",
-      "openSource": true,
-      "languages": ["Go"],
-      "status": "Beta",
-      "lookingForDevelopers": true,
-      "links": {
-        "repo": "https://example.org/git/tinyserv",
-        "download": "https://example.org/git/tinyserv/releases"
-      }
-    },
-    {
-      "name": "Keymaster",
-      "tagline": "Standalone auth server with OIDC, passkeys, and TOTP.",
-      "kind": "Authserver",
-      "authors": [{ "name": "Core Team", "url": "https://example.org/team" }, "Grace Hopper"],
-      "platforms": ["linux", "docker"],
-      "tags": ["oidc", "passkeys", "sso"],
+      "icon": "https://placehold.co/96x96/4b8dc7/ffffff?text=L",
+      "authors": [{ "name": "Core Team", "url": "https://example.org/team" }, "Ada Lovelace"],
+      "platforms": ["web", "linux", "windows", "macos"],
+      "tags": ["e2ee", "voice", "video", "spaces", "reference"],
       "license": "Apache-2.0",
       "openSource": true,
-      "languages": ["Rust"],
-      "status": "Alpha",
-      "lookingForDevelopers": true,
-      "links": {
-        "repo": "https://example.org/git/keymaster",
-        "download": "https://example.org/git/keymaster/releases",
-        "docs": "https://example.org/keymaster/docs"
-      }
-    },
-    {
-      "name": "ChatCorp Bridge",
-      "tagline": "Commercial hosted server with SLA and enterprise support.",
-      "kind": "Server",
-      "authors": ["ChatCorp Inc."],
-      "platforms": ["web"],
-      "tags": ["hosted", "enterprise", "sla"],
-      "license": "Proprietary",
-      "openSource": false,
+      "languages": ["TypeScript", "Rust"],
       "status": "Stable",
       "lookingForDevelopers": false,
       "links": {
-        "website": "https://example.com/chatcorp",
-        "download": "https://example.com/chatcorp/signup"
-      }
-    },
-    {
-      "name": "OldTalk",
-      "tagline": "The original prototype client. No longer maintained.",
-      "kind": "Client",
-      "authors": ["Ada Lovelace"],
-      "platforms": ["linux"],
-      "tags": ["prototype", "legacy"],
-      "license": "MIT",
-      "openSource": true,
-      "languages": ["Python"],
-      "status": "Discontinued",
-      "lookingForDevelopers": false,
-      "links": {
-        "repo": "https://example.org/git/oldtalk",
-        "download": "https://example.org/git/oldtalk/archive"
-      }
-    },
-    {
-      "name": "Glass",
-      "tagline": "Planned native client for wearables and TVs.",
-      "kind": "Client",
-      "authors": ["Linus T."],
-      "platforms": ["android"],
-      "tags": ["wearables", "tv"],
-      "openSource": true,
-      "status": "Planned",
-      "lookingForDevelopers": true,
-      "links": {
-        "repo": "https://example.org/git/glass",
-        "download": "https://example.org/git/glass"
+        "website": "https://example.org/lumen",
+        "repo": "https://example.org/git/lumen",
+        "download": "https://example.org/lumen/download",
+        "docs": "https://example.org/lumen/docs"
       }
     }
   ]
