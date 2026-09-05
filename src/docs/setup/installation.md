@@ -39,18 +39,14 @@ This will clone Freecord's source tree.
 
 **3. Build**<br>
 
-To build a specific component, enter the directory of the component<br>
-*Server Code*: `src/server`<br>
-*Client Code*: `src/client`<br>
-
+Build for server:
 ```sh
-cd src/<directory>
-./run.sh # this will run the code
+cd src/server
+go build -o server ./cmd/server
 ```
 
-or use `go build` to create an executable:<br>
+Build for client:
 ```sh
-cd src/<directory>
-go build -o app ./cmd/ # for client
-go build -o app ./src/ # for server
+cd src/server
+go build -o client ./cmd/
 ```
