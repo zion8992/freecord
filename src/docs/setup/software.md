@@ -163,24 +163,24 @@ EXAMPLE:
   },
   "software": [
     {
-      "name": "Official Client",
-      "tagline": "Official Freecord Client",
+      "name": "Zanar Client",
+      "tagline": "A simple Freecord client written in Go. Always up-to-date.",
       "kind": "Client",
       "authors": [{ "name": "Zonomic", "url": "https://example.org/" }, "Zonomic"],
       "platforms": ["linux", "windows", "macos"],
-      "tags": ["cli"],
+      "tags": ["gui"],
       "license": "Zonomic Project License",
       "openSource": true,
       "languages": ["Go"],
       "status": "alpha",
       "lookingForDevelopers": true,
       "links": {
-        "download": "https://codeberg.org/zion8992/freecord"
+        "download": "https://codeberg.org/zion8992/zanar"
         }
     },
     {
-      "name": "Official Server",
-      "tagline": "Official Freecord Server",
+      "name": "Zio",
+      "tagline": "A fast server for Freecord written in Go.",
       "kind": "Server",
       "authors": [{ "name": "Zonomic", "url": "https://example.org/" }, "Zonomic"],
       "platforms": ["linux", "windows", "macos"],
@@ -192,22 +192,6 @@ EXAMPLE:
       "lookingForDevelopers": true,
       "links": {
         "download": "https://codeberg.org/zion8992/freecord"
-        }
-    },
-    {
-      "name": "Zanar",
-      "tagline": "A simple and updated Freecord client for both Desktop and Web.",
-      "kind": "Client",
-      "authors": [{ "name": "zion8992", "url": "https://zion8992.github.io/" }, "zion8992"],
-      "platforms": ["linux", "windows", "macos"],
-      "tags": ["cli"],
-      "license": "Zonomic Project License",
-      "openSource": true,
-      "languages": ["Go"],
-      "status": "alpha",
-      "lookingForDevelopers": true,
-      "links": {
-        "download": "https://codeberg.org/zion8992/zanar"
         }
     }
   ]

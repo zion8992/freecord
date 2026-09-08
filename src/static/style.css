@@ -523,6 +523,7 @@ footer {
     background-size: 160% 160%;
     border-radius: var(--radius);
     animation: heroDrift 22s ease-in-out infinite alternate;
+    height: 800px;
 }
 @keyframes heroDrift {
     from { background-position: 20% 30%; }

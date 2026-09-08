@@ -10,10 +10,13 @@ Here is a list of things that we need to be done:
 Freecord needs some kind of logo. The [current logo](/static/img/logo.png) is just a placeholder.<br>
 
 **Matrix Instance Moderation**<br>
-We need a few moderators to moderate our [matrix instance](/links/chat.md).<br>
+We need a few moderators to moderate our [matrix instance](/links/chat).<br>
 
 **Developers**<br>
-We need developers with some experience in working with [Go](https://go.dev).
+To expand the community, we are looking for any kind developers. Web developers, software engineers, etc...
+We are looking for developers to write freecord-related software even if it has nothing to do with Freecord itself.
+
+If you want to contribute to writing the official Freecord client and server implementations (Zanar and Zio), you can find them [here](/links/source).
 
 **Community Member**<br>
 Become a community member, just that! You can join the matrix chat instance [here](/links/chat).
